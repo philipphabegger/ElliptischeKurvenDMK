@@ -12,7 +12,7 @@
   $a,b,c\in\IQ$ gibt, so dass $a^2+b^2=c^2$ und $n = ab/2$. 
 \end{bemerkung}
 
-\begin{beispiel}\leavevmode
+\begin{beispiele}\leavevmode
   \begin{enumerate}
   \item [(i)]
     Die Zahl $n=6$ ist kongruent, da es ein rechtwinkliges Dreieck mit Seitenlängen
@@ -41,7 +41,8 @@
     (24/5)^2=(337/60)^2$.
 
   \end{enumerate}  
-\end{beispiel}
+\end{beispiele}
+
 Für jedes Tripel $(a,b,c)$ mit $a,b,c$ positive rationalen Zahlen mit
 $a^2+b^2=c^2$ existieren $u>v>0$ rational mit $a =
 u^2-v^2,b=2uv,c=u^2+v^2$. Hieraus können wir auf systematische Art
@@ -60,6 +61,7 @@ Ist $n=1$ eine kongruente Zahl? Die Antwort ist nein und dies wurde
 von Pierre Fermat bewiesen.
 
 \begin{satz}[Fermat]
+  \label{satz:fermat}
   Eins  ist keine kongruente Zahl.
 \end{satz}
 \begin{proof}
@@ -149,7 +151,7 @@ Lösungsmenge der kubischen Gleichung
   Y^2 = X^3-n^2X  
 \end{equation}
 definiert eine Kurve in der reelle (oder komplexen) Ebene. Von besonderem Interesse sind die
-rationalen Punkte dieser Kurve, d.h. Punkte, deren Koordinaten
+\emph{rationalen Punkte} dieser Kurve, d.h. Punkte, deren Koordinaten
 rational sind.
 
 Die Punkte $(0,0),(\pm n,0)$ liegen augenscheinlich auf der Kurve für
@@ -161,7 +163,19 @@ Weiterhin ist die Umkehrung auch wahr.
 
 Die Gleichung (\ref{eq:ellipticcong}) ist ein Spezialfall der
 Weierstrass-Gleichung, welche im Allgemeinen eine elliptische Kurve
-definiert. 
+definiert.
+
+Den Satz von Fermat, Satz~\ref{satz:fermat}, lässt sich wie folgt
+umformulieren.
+
+\begin{theorem}[Fermat -- Version 2]
+  \label{satz:fermat2}
+  Die rationalen Punkten der Lösungsmenge von $Y^2 = X^3-X$ in der Ebene ist
+  $$
+  \{(0,0),(\pm 1,0)\}.
+  $$
+\end{theorem}
+
 %%% Local Variables:
 %%% TeX-master: "main"
 %%% End:

@@ -1,32 +1,34 @@
 \documentclass[a4paper,12pt,oneside]{scrbook}
 \usepackage{amsmath,amssymb,amsthm,mathrsfs}
 \usepackage{datetime}
-\usepackage{csquotes}
+%\usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage{graphicx}
 %\usepackage{catchfile}
-\usepackage{tikz,tikz-cd}
-\usetikzlibrary{arrows,shapes}
+%\usepackage{tikz,tikz-cd}
+%\usetikzlibrary{arrows,shapes}
 \usepackage[ngerman]{babel}
 
-\input{macrosnotes.tex}
 \input{macros.tex}
 
 \begin{document}
 
-\title{DMK-Weiterbildung Elliptische Kurven}
+\title{Elliptische Kurven und ihre Anwendung in der Kryptographie}
+\subtitle{DMK-Weiterbildung vom 8. September 2022}
 \author{Philipp~Habegger \\ Departement Mathematik und Informatik
  \\ Universität Basel \\ \texttt{philipp.habegger@unibas.ch}}
-\date{Letzte Revision \today, \currenttime}
+\date{\small{Letzte Revision \today, \currenttime}}
 
 \maketitle
 \tableofcontents
 
 \setcounter{chapter}{-1}
 
-\input{notation.tex}
+\input{vorwort.tex}
 
 \input{kongruentezahlen.tex}
+
+\input{elliptischekurven.tex}
 
 \bibliographystyle{alpha}
 \bibliography{literature}
