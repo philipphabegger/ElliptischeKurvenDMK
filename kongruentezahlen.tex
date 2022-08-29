@@ -1,0 +1,168 @@
+\chapter{Kongruente Zahlen}
+
+\begin{definition}
+  Eine natürliche Zahl $n\in\IN$ heisst \emph{kongruente
+    Zahl}\index{Kongruente Zahl}, falls
+  $n$ die Fläche eines rechwinkligen Dreiecks mit rationalen
+  Seitenlängen ist. 
+\end{definition}
+
+\begin{bemerkung}
+  Per Definition ist $n$ genau dann eine kongruente Zahl, wenn es positive
+  $a,b,c\in\IQ$ gibt, so dass $a^2+b^2=c^2$ und $n = ab/2$. 
+\end{bemerkung}
+
+\begin{beispiel}\leavevmode
+  \begin{enumerate}
+  \item [(i)]
+    Die Zahl $n=6$ ist kongruent, da es ein rechtwinkliges Dreieck mit Seitenlängen
+    $a=3,b=4,c=5$  gibt und da $6=3\cdot 4/2$. 
+  \item[(ii)]
+    Für jede kongruente Zahl $n$ und jede rationale Zahl
+    $\lambda\not=0$ ist $\lambda^2 n$ eine kongruente Zahl, sofern es
+    eine ganze Zahl ist. Um das zu
+    beweisen, dürfen wir $\lambda > 0$ annehmen. Nach Voraussetzung
+    ist $n=ab/2$ mit $a^2+b^2=c^2$. Also ${a'}^2+{b'}^2={c'}^2$, wobei
+    $a'=\lambda a, b'=\lambda b, c'=\lambda c$ wiederum rational.
+    Die Fläche des entsprechenden rechtwinkligen Dreiecks ist die
+    Zahl $a'b'/2
+    = \lambda^2 ab/2 = \lambda^2 n$ kongruent, falls sie ganz ist.
+  \item[(iii)]
+    Aus (i) und (ii) folgt, dass es unendlich viele kongruente Zahlen
+    gibt, denn $\{6\lambda^2 : \lambda\in\IN\}$ besteht aus kongruente
+    Zahlen.
+    Weiterhin ist jede kongruente Zahl ein rationales Vielfaches
+    einer quadratfreien kongruenten Zahl.
+
+  \item[(iv)] Es gilt $(3/2)^2 +(20/3)^2 = (41/6)^2$  und damit ist
+    $n=5= (3/2)\cdot(20/3)/2$ kongruent.
+    
+  \item[(v)] Auch $n=7$ ist kongruent wegen $(35/12)^2 +
+    (24/5)^2=(337/60)^2$.
+
+  \end{enumerate}  
+\end{beispiel}
+Für jedes Tripel $(a,b,c)$ mit $a,b,c$ positive rationalen Zahlen mit
+$a^2+b^2=c^2$ existieren $u>v>0$ rational mit $a =
+u^2-v^2,b=2uv,c=u^2+v^2$. Hieraus können wir auf systematische Art
+alle kongruente Zahlen produzieren. Es gilt folgt folgende Aussage.
+
+\begin{lemma}
+  Die Menge der kongruenten Zahlen ist
+  $$
+  \{ n \in \IN : \text{ es gibt $u>v>0$ in $\IQ$ mit $n=(u^2-v^2)uv$ }
+  \}.
+  $$
+\end{lemma}
+
+
+Ist $n=1$ eine kongruente Zahl? Die Antwort ist nein und dies wurde
+von Pierre Fermat bewiesen.
+
+\begin{satz}[Fermat]
+  Eins  ist keine kongruente Zahl.
+\end{satz}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{korollar}
+  Die reelle Zahl $\sqrt{2}$ ist irrational. 
+\end{korollar}
+\begin{proof}
+  Es gilt $a^2+b^2=2^2$ und $ab/2=1$ für $a=b=\sqrt 2$. Aber $1$ ist
+  nicht eine kongruente Zahl wegen Fermats Satz. Damit kann $\sqrt 2$
+  nicht rational sein.
+\end{proof}
+
+Eine klassische Fragestellung ist das folgende Problem.
+
+\begin{problem}
+  Gegeben eine natürliche Zahl $n$. Ist $n$ eine kongruente Zahl oder
+  nicht? 
+\end{problem}
+
+Es ist heute kein Algorithmus bekannt, der entscheidet, ob eine
+gegebene natürliche Zahl kongruent ist oder nicht. Daher kennen wir
+keinen systematischen Zugang zu der Frage oben.
+
+In der Definition von kongruente Zahl kommen 
+
+\begin{lemma} \label{lem:congruentelliptic}
+  Sei $n\in\IN$. 
+  \begin{enumerate}
+  \item
+  Seien $a,b,c\in \IQ$ mit $a^2+b^2=c^2,a\not=c$ und $n = ab/2$. Wir definieren
+  \begin{equation*}
+    x = \frac{nb}{c-a} \quad\text{und}\quad
+    y = \frac{2n^2}{c-a}. 
+  \end{equation*}
+  Dann gilt $y^2 = x^3-n^2 x$.
+  \item Seien $x,y\in\IQ$ mit $y^2 = x^3-n^2x$. Falls $y\not=0$, dann
+    ist $n$ eine kongruente Zahl.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Teil (i) ist eine direkt Rechnung. Es gilt
+  \begin{equation*}
+    y^2 = \frac{4n^4}{(c-a)^2} = \frac{a^4b^4}{4(c-a)^2} 
+  \end{equation*}
+  und
+  \begin{alignat*}1
+    x^3 -n^2 x &= n^3 \frac{b^3}{(c-a)^3} - n^3 \frac{b}{c-a}
+    = n^3 \frac{b}{c-a}\left(\frac{b^2}{(c-a)^2}-1\right)
+    = n^3 b\frac{b^2-(c-a)^2}{(c-a)^3}
+    = \frac{a^3b^4}{8}\frac{b^2-(c-a)^2}{(c-a)^3}.
+  \end{alignat*}
+  Es gilt  $$
+  y^2 - (x^3-n^2x) = \frac{a^3b^4}{8(c-a)^3} \left(
+    2a(c-a) - b^2+(c-a)^2\right) =
+  \frac{a^3b^4}{8(c-a)^3} (c^2-a^2-b^2)=0,
+  $$
+  was für (i)  zu zeigen.
+
+  Für den Beweis von (ii) setzen wir
+  \begin{equation*}
+    a = \left|\frac{n^2-x^2}{y}\right|, \quad
+    b = \left|\frac{2nx}{y}\right|, \quad\text{und}\quad
+    c = \left|\frac{n^2+x^2}{y}\right|. 
+  \end{equation*}
+  Eine direkt Rechnung zeigt $a^2+b^2=c^2$. Weiterhin gilt
+  \begin{equation*}
+    \frac{ab}{2} = \frac{|(n^2-x^2)(2nx)|}{2y^2} = \frac{2n |n^2x -
+      x^3|}{2y^2} = \frac{n |-y^2|}{y^2} = n.
+  \end{equation*}
+
+  Da $a,b,c$ nicht negative rationale Zahlen sind, reicht es zu
+  zeigen, dass $abc\not=0$. Es gilt $c = (n^2+x^2)/|y| \ge n^2/|y|>0$.
+
+  Es gilt $y^2 = (x^2-n^2)x\not=0$. Daraus folgt 
+  $x^2-n^2\not=0$ und $x\not=0$. Also folgt $a\not=0$ und $b\not=0$. 
+
+  Es folgt, dass $n$ eine kongruente Zahl ist. 
+\end{proof}
+
+Für jede natürliche Zahl $n\in\IN$ definiert
+Lösungsmenge der kubischen Gleichung
+\begin{equation}
+  \label{eq:ellipticcong}
+  Y^2 = X^3-n^2X  
+\end{equation}
+definiert eine Kurve in der reelle (oder komplexen) Ebene. Von besonderem Interesse sind die
+rationalen Punkte dieser Kurve, d.h. Punkte, deren Koordinaten
+rational sind.
+
+Die Punkte $(0,0),(\pm n,0)$ liegen augenscheinlich auf der Kurve für
+jedes $n$. Gibt es mindestens ein weiterer rationaler Punkt, d.h. ein
+Punkt dessen Ordinate nicht verschwindet, so ist $n$ eine kongruente
+Zahl.
+Weiterhin ist die Umkehrung auch wahr. 
+
+
+Die Gleichung (\ref{eq:ellipticcong}) ist ein Spezialfall der
+Weierstrass-Gleichung, welche im Allgemeinen eine elliptische Kurve
+definiert. 
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
+

@@ -1,3 +1,23 @@
+\newcounter{maincounter}
+\newcounter{excounter}
+\numberwithin{maincounter}{chapter}
+\numberwithin{equation}{chapter}
+\numberwithin{excounter}{chapter}
+\renewcommand{\theexcounter}{\thechapter.\Alph{excounter}}
+\newtheorem{lemma}[maincounter]{Lemma}
+\newtheorem{proposition}[maincounter]{Proposition}
+\newtheorem{korollar}[maincounter]{Korollar}
+\newtheorem{bemerkung}[maincounter]{Bemerkung}
+\newtheorem{theorem}[maincounter]{Theorem}
+\newtheorem{konvention}[maincounter]{Konvention}
+\newtheorem{aufgabe}[excounter]{Übungsaufgabe}
+\newtheorem{beispiel}[maincounter]{Beispiel}
+\newtheorem{gegenbespiel}[maincounter]{Gegenbeispiel}
+\newtheorem{vermutung}[maincounter]{Vermutung}
+\newtheorem{definition}[maincounter]{Definition}
+\newtheorem{deflemma}[maincounter]{Definition-Lemma}
+\newtheorem{problem}[maincounter]{Problem}
+
 \newtheorem*{crucial}{Crucial Observation}
 \newtheorem*{warning}{Warning}
 
@@ -91,6 +111,7 @@
 \newcommand{\mat}[2]{\mathrm{Mat}_{#1}({#2})}
 \newcommand{\ssm}{\smallsetminus}
 \newcommand{\ord}[1]{{\rm ord}({#1})}
+
 \newcommand{\opt}[2]{{\rm Opt}_{#2}({#1})}
 \newcommand{\Height}[1]{{H}({#1})}
 \newcommand{\trdeg}{{\rm trdeg\,}} 
