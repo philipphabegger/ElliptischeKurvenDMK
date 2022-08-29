@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt,oneside]{scrbook}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{datetime}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{graphicx}
+%\usepackage{catchfile}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows,shapes}
+\usepackage[ngerman]{babel}
+
+\input{macrosnotes.tex}
+\input{macros.tex}
+
+\begin{document}
+
+\title{DMK-Weiterbildung Elliptische Kurven}
+\author{Philipp~Habegger \\ Department Mathematik und Informatik
+ \\ Universität Basel \\ \texttt{philipp.habegger@unibas.ch}}
+\date{Letzte Revision \today, \currenttime \,(CEST)}
+
+\maketitle
+\tableofcontents
+
+%\setcounter{chapter}{-1}
+
+
+\bibliographystyle{alpha}
+\bibliography{literature}
+
+\vfill\hfill\texttt{\input{.git/refs/heads/main}}
+
+\end{document}
