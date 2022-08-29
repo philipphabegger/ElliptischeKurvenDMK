@@ -41,8 +41,8 @@ Aspekte.
   \begin{enumerate}
   \item [(i)] In (\ref{eq:ellipticcong}) hatten wir die Gleichung $Y^2 = X^3-n^2X$
     für $n\in\IN$ betrachtet. Es handelt sich um eine
-    Weierstrass-Gleichung $E$, für $K=\IQ$ (oder jeden Körper, der $\IQ$
-    enthält) mit $\Delta_E = -2^4 3^3 n^4$.
+    Weierstrass-Gleichung $E_n$, für $K=\IQ$ (oder jeden Körper, der $\IQ$
+    enthält) mit $\Delta_{E_n} = -2^4 3^3 n^4$.
   \item[(ii)] Die Gleichung
     \begin{equation*}
       Y^2 = X^3,
@@ -618,6 +618,33 @@ Verknüpfung natürlicher. So liegen in  Unterfall 2b die drei Punkte
 $P=Q,[0:1:0]$ auf einer projektiven Gerade in $\IP^2(K)$, welche $E$
 ``mit Vielfachheit 2'' schneidet. 
 
+
+\begin{lemma}
+  \label{lem:2torsion}
+  Sei $E:Y^2 = X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in K$.
+  Sei $P=(x,y)\in E(K)\ssm\{0\}$. Dann gilt
+   $P\in E(K)$ hat Ordnung $2$ genau dann, wenn $y=0$ und $x^3+ax+b=0$.
+\end{lemma}
+\begin{proof}
+  Ist $P$ der Ordnung zwei, so gilt $P+P=\cO$.
+  Wir durchsuchen die sieben Fälle in der Konstruktion der
+  Verknüpfung. Nur Unterfall 2b ergibt $\cO$ als Summe, daher muss
+  $P=(x,0)$ sein und $x^3+ax+b=0$.
+
+  Die Umkehrung der Aussage folgt auf ähnliche Art, wiederum müssen
+  wir in Unterfall 2b sein.
+\end{proof}
+
+\begin{korollar}
+  \label{kor:congruentelliptic}
+  Sei $n\in\IN$ und $E_n : Y^2 = X^3-n^2 X$. Dann ist
+  $n$ genau dann eine kongruente Zahl, wenn $E_n(\IQ) \supsetneq
+  \{(0,0),(\pm n,0),\cO\}$. 
+\end{korollar}
+\begin{proof}
+  Das Korollar folgt aus Lemma~\ref{lem:congruentelliptic}. 
+\end{proof}
+
 \section{Die Struktur der Gruppe $E(\IQ)$}
 
 In diesem Abschnitt beschäftigen wir uns mit der Gruppentheoretischen
@@ -626,11 +653,18 @@ rationalen Koeffizienten beschrieben wird.
 
 
 \begin{beispiel}
-  Sei $E$ durch $Y^2 = X^3-X$ definiert. 
-  Aus Beispiel \ref{bsp:fermat}, bzw. aus dem Satz von Fermat, Satz
-  \ref{satz:fermat2}, folgt $E(\IQ) = \{(0,0),(\pm 1,0),\cO\}$. Alle
-  Punkte $P\in E(\IQ)$ erfüllen $P+P=\cO$. Ingesamt ist $E(\IQ)$ damit
-  zur Kleinschen Vierergruppe $(\IZ/2\IZ)^2$ isomorph. 
+  \label{bsp:vierergruppe}
+  Sei $E_n$ durch $Y^2 = X^3-n^2 X$ definiert mit $n\in\IN$.
+  Die Menge $H=\{(0,0),(\pm 1,0),\cO\}$ ist unter der Verknüpfung $+$
+  abgeschlossen
+  und ebenfalls unter der Inversion.
+  Es handelt sich um eine Untergruppe von $E_n(\IQ)$.
+  Alle
+  Punkte $P$ dieser Untergruppe erfüllen $P+P=\cO$.  Also ist $H$ zur
+  Kleinschen Vierergruppe $(\IZ/2\IZ)^2$ isomorph ist.
+  
+  Im Fall $n=1$ folgt aus Beispiel \ref{bsp:fermat}, bzw. aus dem Satz von Fermat, Satz
+  \ref{satz:fermat2}, dass $E_1(\IQ) = H=  \{(0,0),(\pm 1,0),\cO\}$. 
 \end{beispiel}
 
 \begin{beispiel}
@@ -656,6 +690,36 @@ rationalen Koeffizienten beschrieben wird.
 
   Inbesondere ist $E(\IQ)$ eine unendliche Menge. 
 \end{beispiel}
+
+\begin{lemma}
+  \label{len:noorder4}
+  Sei $n\not=0$ in $\IQ$ und $E:Y^2 = X^3-n^2X$. Sei $P\in E(\IQ)$,
+  dann hat $P$ nicht Ordnung $4$. 
+\end{lemma}
+\begin{proof}
+  Sei  $P =(x,y)\in E(\IQ)$. Wir dürfen annehmen, dass $P$ nicht
+  Ordnung $2$ hat. Also gilt $y\not=0$ wegen Lemma~\ref{lem:2torsion}.
+  Es gilt  
+  $2P=(*,y')$ mit $y'\in \IQ$.
+
+  Mit Unterfall 2a berechnen wir
+  \begin{alignat*}1
+    2P= P+P &=\left(*, \frac{-27x^6 + 27n^2x^4 + 36y^2x^3 -
+        9n^4x^2 - 12n^2y^2x + (-8y^4 + n^6)}{8y^3}\right)\\
+    &= \left(*, \frac{x^6 - 5n^2x^4 - 5n^4x^2 + n^6}{8y^3}\right)
+  \end{alignat*}
+  dabei verwendeten wir $y^2 = x^3-n^2x$.
+  Wir faktorisieren
+  $$
+  x^6 - 5n^2x^4 - 5n^4x^2 + n^6 = (x^2+n^2)(x^2-2nx-n^2)(x^2+2nx-n^2). 
+  $$
+  Die Polynome $X^2\pm 2nX-n^2$ haben Diskriminante $8n^2$. Aber
+  $8n^2$ ist nicht das Quadrat einer rationalen Zahl. Also hat $X^2\pm
+  2nX-n^2$ keine Nullstelle in $\IQ$. Auch $X^2+n^2$ hat keine
+  Nullstelle in $\IQ$. Folglich ist
+  $x^6 - 5n^2x^4 - 5n^4x^2 + n^6\not=0$, also $y'\not=0$. Damit hat $2P$ nicht
+  Ordnung $2$, vgl. Lemma~\ref{lem:2torsion}. 
+\end{proof}
 
 \begin{satz}[Lutz (1937), Nagell (1935)]
   Sei $E:Y^2=X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in\IZ$.
@@ -690,7 +754,7 @@ paar wenige Möglichkeiten fest.
 \end{satz}
 
 Der Exponent $r$ in Mordells Satz heisst \emph{Rang}\index{Rang von $E(\IQ)$} von
-$E(\IQ)$. Diese Invariante liegt tiefer und bleibt mysteriös.
+$E(\IQ)$ oder $E$. Diese Invariante liegt tiefer und bleibt mysteriös.
 
 Die folgende Fragestellung ist 2022 ein offenes Problem.
 
@@ -699,7 +763,36 @@ Die folgende Fragestellung ist 2022 ein offenes Problem.
   Weierstrass-Gleichung mit rationalen Koeffizienten berechnet. 
 \end{problem}
 
-Hier ist der  aktuelle Weltrekord bzgl. dem Rang.
+\begin{satz}
+  Sei $n\in\IN$ und $E_n : Y^2=X^3-n^2X$. Dann ist $n$ genau dann eine
+  kongruente Zahl, wenn $E_n$ positiven Rang besitzt. 
+\end{satz}
+\begin{proof}
+  Besitzt $E_n$ positiven Rang, so existiert wegen
+  Lemma~\ref{lem:2torsion} ein  $(x,y)\in E_n(\IQ)$ mit
+  $y\not=0$. Wegen Korollar~\ref{kor:congruentelliptic} ist $n$ eine
+  kongruente Zahl.
+
+  Sei umgekehrt $n$ eine kongruente Zahl. Wegen
+  Korollar~\ref{kor:congruentelliptic} existiert $(x,y)\in E_n(\IQ)$
+  mit $y\not=0$. Wir werden ausschliessen, dass $(x,y)$ ein Punkt
+  endlicher Ordnung ist. Daraus wird folgen, dass der Rang positiv
+  ist.
+
+  A priori ist $H=\{(0,0),(\pm n,0),\cO\}$ eine Untergruppe von
+  $E_n(\IQ)$ die zu $(\IZ/2\IZ)^2$ isomorph ist, vgl.
+  Lemma~\ref{bsp:vierergruppe}. Die Untergruppe $H$ ist ebenfalls eine
+  Untergruppe von $G$ wie in Mazurs Satz. Folglich ist  $G=H$ oder $G$
+  ist zu $\IZ/2\IZ\times\IZ/4\IZ$ isomorph.
+  Im zweiten Fall hätte $E_n(\IQ)$ ein Element der Ordnung $4$, aber
+  dies ist durch Lemma~\ref{len:noorder4} ausgeschlossen. Also muss
+  $G=H$. Weil $(x,y)$ nicht in $G$ liegt, hat $(x,y)$ unendliche
+  Ordnung. Also ist der Rang von $E_n$ positiv. 
+\end{proof}
+
+Man kann diesen letzten Satz auch ohne den tiefen Satz von Mazur beweisen.
+
+Hier ist der aktuelle Weltrekord bzgl. dem Rang.
 
 \begin{satz}[Elkies (2006)]
   Es gibt eine Weierstrass-Gleichung mit rationalen Koeffizienten und
