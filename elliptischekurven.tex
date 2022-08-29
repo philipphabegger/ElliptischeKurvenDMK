@@ -224,6 +224,7 @@ sich alles abspielt (sofern nicht anders vermerkt).
 \end{definition}
 
 \begin{beispiel}
+  \label{bsp:fermat}
   Für die Weierstrass-Gleichung $E$ gegeben durch $Y^2 = X^3-X$ und
   für $K=\IQ$ besagt der 
   Satz von Fermat, Satz~\ref{satz:fermat2}, dass
@@ -497,12 +498,226 @@ konstruieren, welche die oben dargestellte Verknüpfung mit dem
 Gruppengesetzt der Picard-Gruppe in Verbindung setzt.
 
 
+\begin{bemerkung}
+  Die Verknüpfung $E(K)\times
+  E(K)\rightarrow E(K)$ sowie die Inversion $E(K)\rightarrow E(K)$
+  werden mit der Hilfe von 
+  Quotienten von Polynomen mit Koeffizienten in $K$ beschrieben.
+
+  ISt $K'$ eine Körpererweiterung von $K$, dann ist $E(K)$ eine
+  Teilnmenge von $E(K')$. Da die Verknüpfung algebraisch ist, ist
+  $E(K)$ eine Untergruppe von $E(K')$.
+\end{bemerkung}
+
+\section{Die Projektive Ebene}
+
+Die Hinzunahme des Punktes $\cO$ erscheint zunächst unnatürlich.
+Arbeitet man mit projektiver Geometrie, so taucht $\cO$ ganz natürlich
+auf.
+
+\begin{definition}
+  Die \emph{$K$-Punkte der projektiven Ebene}\index{$K$-Punkte der
+    projektiven Ebene} sind die Geraden in $K^3$,
+  welche den Nullpunkt enthalten. Wir bezeichnen diese Punkte mit
+  $\IP^2(K)$. 
+\end{definition}
+
+\begin{bemerkung}
+  Ein Element von $\IP^2(K)$ entspricht einer Gerade $G\subset K^3$,
+  also
+  $$ G = \{ (\lambda x,\lambda y,\lambda z) : \lambda\in K\}$$
+  für ein Tripel $(x,y,z)\in K^3\ssm\{0\}$. Zwei Tripel
+  $(x,y,z),(x',y',z')\in K^3\ssm\{0\}$ definieren die gleiche Gerade
+  genau dann, wenn
+  $(x,y,z)=(\lambda x',\lambda y',\lambda z')$ für ein $\lambda\in
+  K\ssm\{0\}$.
+  In diesem Fall schreiben wir $(x,y,z)\sim (x',y',z')$. Dabei
+  definiert $\sim$ eine Äquivalenzrelation auf $K^3\ssm\{0\}$.
+
+  Die $K$-Punkte projektive Ebene sind die Äquivalenzklassen dieser
+  Äquivalenzrelation, d.h. 
+  \begin{equation*}
+    \IP^2(K) = (K^3\ssm\{0\})/\!\sim.
+  \end{equation*}
+  Wir bezeichnen Punkte in $\IP^2(K)$ mit $[x:y:z]$, wobei $(x,y,z)\in
+  K^3\ssm\{0\}$. In dieser Schreibweise gilt
+  \begin{equation*}
+    [x:y:z] = [\lambda x : \lambda y : \lambda z]. 
+  \end{equation*}
+
+  \textbf{Achtung:} Die Koordinaten $(x,y,z)$ heissen \emph{projektive
+    Koordinaten} des Punkts $P=[x:y:z]$. Sie sind i.A.
+  \underline{nicht} durch den Punkt $[x:y:z]$ bestimmt.
+
+  Die Abbildung
+  \begin{equation}
+    \label{eq:affinechart}
+    K^2\ni (x,y)\rightarrow [x:y:1] 
+  \end{equation}
+  ist injektiv. Also
+  können wir vermöge dieser Abbildung $K^2$ als Teilmenge von
+  $\IP^2(K)$ betrachten. 
+\end{bemerkung}
 
 
-Die Verknüpfung $E(K)\times
-E(K)\rightarrow E(K)$ sowie die Inversion $E(K)\rightarrow E(K)$
-werden mit der Hilfe von 
-Quotienten von Polynomen mit Koeffizienten in $K$ beschrieben.
+Sei $E: Y^2 = X^3+aX+b$ eine Weierstrass-Gleichung mit
+Weierstrass-Polynom $F = Y^2 - (X^3+aX+b)$. Wir führen eine dritte
+Unbekannte $Z$ ein und \emph{homogenisieren} das Polynom $F$, d.h.
+\begin{equation}
+  \label{eq:homogenisierung}
+  F^{\mathrm{hom}} = F(X/Z,Y/Z)Z^3 = Y^2Z - X^3 - aXZ^2 -bZ^3.
+\end{equation}
+
+Für ein Tripel $(x,y,z)\in K^3\ssm\{0\}$ gilt
+$$F^{\mathrm{hom}}(\lambda x,\lambda y,\lambda z)
+=\lambda^3F^{\mathrm{hom}}(x,y,z).$$
+Hieraus folgt, dass die folgenden Aussagen für alle $P\in \IP^2(K)$
+äquivalent  sind.
+\begin{enumerate}
+\item [(i)] Für eine Wahl von projektiven Koordinaten $(x,y,z)$ von
+  $P$ gilt $  F^{\mathrm{hom}}(x,y,z) = 0$.
+\item [(ii)] Für jede Wahl von projektiven Koordinaten $(x,y,z)$ von
+  $P$ gilt $  F^{\mathrm{hom}}(x,y,z) = 0$.
+\end{enumerate}
+Ist eine dieser Aussagen erfüllt, so schreiben wir
+$F^{\mathrm{hom}}(P)=0$. 
+
+betrachten wir die ``Nullstellenmenge''
+\begin{equation*}
+  E^{\mathrm{hom}}(K) = \{P \in \IP^2(K): F^{\mathrm{hom}}(P) = 0\}
+\end{equation*}
+als Teilmenge von $\IP^2(K)$.
+
+Sei $P$ ein Punkt dieser Menge und $(x,y,z)$ eine Wahl von projektiven
+Koordinaten von $P$. Es gilt zwei Fälle.
+
+\textbf{Fall 1. Es gilt $z\not=0$.} In diesem Fall gilt $[x:y:z] =
+[x/z:y/z:1]$. Wir nehmen o.B.d.A. an, dass $z=1$, also $P=[x:y:1]$.
+Die Bedingung $F^{\mathrm{hom}}(P)=0$ heisst nun $F(x,y)=0$ und damit
+ist $(x,y) \in E(K)\ssm\{\cO\}$.
+
+\textbf{Fall 2. Es gilt $z=0$.} Die Bedingung
+$F^{\mathrm{hom}}([x:y:0])=0$ impliziert
+$x=0$ wegen (\ref{eq:homogenisierung}). Also $P = [0:y:0]$. Aber dann
+muss $y\not=0$ sein, denn $P$ entspricht einer Gerade mit
+Richtungsvektor $(0,y,0)$. Es folgt $P = [0:1:0]$.
+
+Ist umgekehrt $(x,y)\in E(K)\ssm\{\cO\}$, so liegt $[x:y:1]$ in
+$E^{\mathrm{hom}}(K)$.
+
+
+Vermöge der Abbildung (\ref{eq:affinechart}) haben wir die natürliche
+Bijektion 
+\begin{equation*}
+  E^{\mathrm{hom}}(K) \rightarrow E(K),
+\end{equation*}
+wobei $[0:1:0]$ auf $\cO$ abgebildet wird. 
+
+In dieser Anschauung wirken auch einige Fälle der Konstruktion der
+Verknüpfung natürlicher. So liegen in  Unterfall 2b die drei Punkte
+$P=Q,[0:1:0]$ auf einer projektiven Gerade in $\IP^2(K)$, welche $E$
+``mit Vielfachheit 2'' schneidet. 
+
+\section{Die Struktur der Gruppe $E(\IQ)$}
+
+In diesem Abschnitt beschäftigen wir uns mit der Gruppentheoretischen
+Struktur von $E(\IQ)$, wobei $E$ durch eine Weierstrass-Gleichung mit
+rationalen Koeffizienten beschrieben wird. 
+
+
+\begin{beispiel}
+  Sei $E$ durch $Y^2 = X^3-X$ definiert. 
+  Aus Beispiel \ref{bsp:fermat}, bzw. aus dem Satz von Fermat, Satz
+  \ref{satz:fermat2}, folgt $E(\IQ) = \{(0,0),(\pm 1,0),\cO\}$. Alle
+  Punkte $P\in E(\IQ)$ erfüllen $P+P=\cO$. Ingesamt ist $E(\IQ)$ damit
+  zur Kleinschen Vierergruppe $(\IZ/2\IZ)^2$ isomorph. 
+\end{beispiel}
+
+\begin{beispiel}
+  Sei $E$ durch $Y^2 = X^3-5^2X$ definiert und $P = (-4,6) \in
+  E(\IQ)$.
+  Wir berechnen
+  \begin{alignat*}1
+    2P=P+P &= \left(\frac{1681}{144}, \frac{62279}{1728}\right),\\
+    3P=P+P +P &= \left(\frac{-2439844}{5094049}, \frac{-39601568754}{11497268593} \right),\\
+    4P= P+P +P+P &= \left( \frac{11183412793921}{2234116132416}, -\frac{1791076534232245919}{3339324446657665536}\right).
+  \end{alignat*}
+  Die Vielfache $kP$ von $P$ haben weiterhin rationale Koeffizienten,
+  das ist keine Überraschung angesichts der Konstruktion des
+  Gruppengesetzes. Gleichzeitig sehen wir, dass $kP$ für $k>1$ nicht
+  notwendigerweise ganze Koordinaten besitzt, falls der Ausgangspunkt $P$
+  es tut.
+
+  Nun stellt sich die natürliche Frage. Ist $\{ kP : k\ge 1\}$ eine
+  endliche oder unendliche Menge? Die Berechnung ob legt nahe, dass
+  $kP$ für wachsendes $k$ zunehmend ``kompliziert wird''.
+  Aus dem folgenden Satz von Lutz--Nagell folgt, dass $2P$ unendliche
+  Ordnung hat. Das gleiche muss für $P$ folgen.
+
+  Inbesondere ist $E(\IQ)$ eine unendliche Menge. 
+\end{beispiel}
+
+\begin{satz}[Lutz (1937), Nagell (1935)]
+  Sei $E:Y^2=X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in\IZ$.
+  Falls $ P =(x,y)\in E(\IQ)$ ein Element endlicher Ordnung ist, so
+  gilt $x,y\in\IZ$. 
+\end{satz}
+
+Ein zentrale Satz in der arithmetischen Theorie elliptische Kurven ist
+der Satz von Mordell.
+
+\begin{satz}[Mordell (1922)] Sei $E:Y^2 = X^3+aX+b$ eine
+  Weierstrass-Gleichung mit $a,b\in\IQ$. Dann existiert $r\ge 0$ in
+  $\IZ$ und eine endliche Gruppe $G$, so dass
+  $E(\IQ)$ zu $G\times \IZ^r$ isomorph ist.
+\end{satz}
+
+Die Gruppe $G$ in Mordells Satz kann mit den Elementen in $E(\IQ)$
+endlicher Ordnung identifiziert werden. Der Satz von Lutz--Nagell
+ermöglicht es uns $G$ explizit zu berechnen, falls $a,b\in\IZ$.
+
+Ein tiefes Resultat von Barry Mazur legt die Gruppe $G$ bis auf ein
+paar wenige Möglichkeiten fest.
+
+\begin{satz}[Mazur (1978)] 
+  In der Notation von Mordells Satz ist $G$ zu einer der folgenden
+  Gruppen isomorph:
+  \begin{alignat*}1
+    &\IZ/n\IZ \quad\text{für ein}\quad n\in
+    \{1,2,3,4,5,6,7,8,9,10,12\},\\
+    &\IZ/2\IZ\times\IZ/(2n)\IZ \quad\text{für ein}\quad n\in\{1,2,3,4\}.\\
+  \end{alignat*}
+\end{satz}
+
+Der Exponent $r$ in Mordells Satz heisst \emph{Rang}\index{Rang von $E(\IQ)$} von
+$E(\IQ)$. Diese Invariante liegt tiefer und bleibt mysteriös.
+
+Die folgende Fragestellung ist 2022 ein offenes Problem.
+
+\begin{problem}
+  Entwickeln Sie einen Algorithmus der den Rang $r$ aus einer
+  Weierstrass-Gleichung mit rationalen Koeffizienten berechnet. 
+\end{problem}
+
+Hier ist der  aktuelle Weltrekord bzgl. dem Rang.
+
+\begin{satz}[Elkies (2006)]
+  Es gibt eine Weierstrass-Gleichung mit rationalen Koeffizienten und
+  Rang $\ge 28$.\footnote{
+Eine lange Weierstrass-Gleichung für das entsprechende Beispiel ist
+$Y^2 + XY + Y = X^3 - X^2 -
+20067762415575526585033208209338542750930230312178956502X +
+34481611795030556467032985690390720374855944359319180361266008296291939448732243429$. }
+\end{satz}
+
+\begin{frage}
+  Gibt es eine universelle obere Schranke für den Rang in Mordells Satz?
+\end{frage}
+
+Auch diese Frage zum Rang ist offen. Es gibt eine Heuristik von Park,
+Poonen, Voight, und Mathcett Wood, welche nahelegt, dass der Rang
+gegen oben beschränkt ist.
+
 
 
 %%% Local Variables:
