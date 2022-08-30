@@ -15,4 +15,4 @@ Links
 
 [Veranstaltung auf DMK-Webseite](https://math.ch/DMK2022c/)
 
-[DMK-Webseite](https://dmk.vsmp.ch/)
+[DMK-Webseite](http://dmk.vsmp.ch/)
