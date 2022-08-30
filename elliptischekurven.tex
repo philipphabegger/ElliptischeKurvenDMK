@@ -1,4 +1,5 @@
 \chapter{Elliptische Kurven}
+\label{kap:ek}
 
 In diesem Abschnitt werden elliptische Kurven ad hoc eingeführt.
 Teil des Datums einer elliptischen Kurve ist ein Grundkörper $K$. Dies
@@ -22,7 +23,7 @@ Aspekte.
   Eine \emph{Weierstrass-Gleichung}\index{Weierstrass-Gleichung} ist eine Gleichung vom Typ
   \begin{equation}
     \label{eq:weierstrass}
-    E: Y^2 = X^3 + aX+b
+    E: Y^2 = X^3 + aX + b
   \end{equation}
   mit Unbekannten $X,Y$ und Koeffizienten $a,b\in K$, welche die
   Bedingung
@@ -30,7 +31,10 @@ Aspekte.
     \label{eq:disccondition}
     \Delta_E = -2^4(4a^3+27b^2)\not=0
   \end{equation}
-  erfüllt. Die Grösse $\Delta_E$, ein Element aus $K$, heisst
+  erfüllt. Wir bezeichnen $E$ auch als \emph{Elliptische
+    Kurve}\index{Elliptische Kurve}
+  definiert über $K$.
+  Die Grösse $\Delta_E$, ein Element aus $K$, heisst
   \emph{Diskriminante}\index{Diskriminante einer Weierstrass-Gleichung}
   der Weierstrass-Gleichung $E$. Zur Weierstrass-Gleichung $E$ gehört
   das Weierstrass-Polynom\footnote{Diese Beizeichnung ist nicht
@@ -510,6 +514,7 @@ Gruppengesetzt der Picard-Gruppe in Verbindung setzt.
 \end{bemerkung}
 
 \section{Die Projektive Ebene}
+\label{sec:projektiv}
 
 Die Hinzunahme des Punktes $\cO$ erscheint zunächst unnatürlich.
 Arbeitet man mit projektiver Geometrie, so taucht $\cO$ ganz natürlich
