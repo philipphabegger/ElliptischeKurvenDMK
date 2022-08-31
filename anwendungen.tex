@@ -1,0 +1,136 @@
+\chapter{Anwendungen}
+
+In diesem Abschnitt untersuchen wir die folgenden
+zwei Anwendungen der Theorie
+elliptischer Kurven:
+
+\begin{itemize}
+\item Der Diffie-Hellman Schlüsselaustausch mit elliptischen Kurven
+\item Lenstras (statistisches)
+  Faktorisierungsverfahrung für natürliche Zahlen
+\end{itemize}
+
+Für beide Anwendungen arbeiten wir nicht, wie in den ersten
+Abschnitten, mit elliptischen Kurven über dem Körper $\IQ,\IR$ oder
+$\IC$. Sondern wir werden mit elliptischen Kurven über einem endlichen
+Körper oder gar einem endlichen Ring arbeiten. 
+
+\section{Diffie-Hellman Schlüsselaustausch}
+
+Der Diffie-Hellman Schlüsselaustausch liefert eine Lösung für das
+folgende Problem.
+
+Zwei Personen, hier $A$ und $B$ genannt, können nur über einem offenen
+(und unsicheren!)
+Kanal miteinander kommunizieren. Dies könnte z.B. eine
+nicht-abhörsichere Telefonleitung sein oder die beiden kommunizieren
+über Postkarten. Beide möchten sich auf ein gemeinsames Geheimnis
+einigen. In den Anwendungen ist dieses gemeinsame Geheimnis z.B. der
+Schlüssel für ein symmetrisches Verschlüsselungsverfahren wie 
+AES. Sobald dieser gemeinsame Schlüssel beiden vorliegt, können A
+und B also ungestört, d.h. verschlüssel miteinander kommunizieren. Bei
+Bilden des gemeinsamen Schlüssels müssen A und B davon ausgehen, dass
+Unbekannte zuhören. Es soll schlussendlich verhindert werden, dass
+diese keinen Rückschlüsse auf das Geheimnis machen können.
+
+Der Schlüsselaustausch funktioniert wie folgt.
+
+\bigskip
+\textbf{Schritt 1.} A und B legen a priori 
+eine grosse Primzahl $p$ und damit einen endlichen Körper $\IF_p$ fest.
+Sie einigen sich weiterhin auf eine elliptische Kurve
+$$E: Y^2 = X^3+aX+b$$
+wobei $a,b\in\IF_p$ und auf einen rationalen Punkt $P\in
+E(\IF_p)\ssm\{\cO\}$. Die Sicherheit wird gewährleistet, wenn $p$
+``gross'' ist und wenn die Ordnung of $P$ als Element der abelschen
+Gruppe auch eine grosse  Primzahl.  
+\footnote{Der Einfachheitshalber arbeiten wir hier
+  mit nicht mit langen Weierstrass-Gleichungen. In Anwendungen kommt
+  z.B. die Primzahl 
+ $p = 2^{255-19}$ und die elliptische Kurve
+  $E: Y^2 = X^3+486662X^2+X$ mit langer Weierstrass-Gleichung vor. Der
+rationale Punkt $P$ hat die Form $(9,*)$. Er erzeugt eine Untergruppe
+von $E(\IF_p)$ dessen Ordnung die Primzahl $\#E(\IF_p)/8$ ist.}
+Die gesamte Information $(p,E,P)$ ist an dieser Stelle rein
+öffentlich. A und B müssen davon ausgehen, dass dritte Zugriff auf
+diese Information haben.
+
+\bigskip
+\textbf{Schritt 2.} In diesem Schritt wählt A per Zufall eine
+natürliche Zahl $a$, die optimalerweise teilerfremd zur Ordnung von
+$P$ ist. \emph{Die Zahl $a$ muss geheim bleiben}, nur A kennt sie. A berechnet nun den Punkt
+$$
+a\cdot P = \underbrace{P+P+P+\cdots + P}_{\text{$a$ mal}}.
+$$
+
+Diese Berechnung lässt sich wie folgt effizient gesalten.
+Ist die Entwicklung von $a$ zur Basis $2$ durch $\sum_{i} a_i 2^i$ mit
+$a_{i}\in \{0,1\}$, so gilt
+$$
+a\cdot P =\sum_{i : a_i=1} 2^i \cdot P.$$
+Also lässt sich $a \cdot P$ rein aus der  Addition $E(\IF_p)\times
+E(\IF_p)\rightarrow E(\IF_p)$  und Iterationen der
+Verdoppelungsabbildung  $2\colon E(\IF_p)\rightarrow E(\IF_p)$
+bestimmen. 
+
+\bigskip
+\textbf{Schritt 3.} B macht das gleiche und wählt eine geheime natürliche Zahl
+$b$. Daraufhin berechne $B$ den Punkt $b\cdot P \in E(\IF_p)$.
+
+\bigskip
+\textbf{Schritt 4.} Bis anhin wurde noch keine Information zwischen A
+und B ausgetausch (bis auf die Wahl von $(p,E,P)$.)
+In Schritt 4 schickt A den Punkt $a\cdot P$ and B und B schickt
+$b\cdot P$ an A. Der Informationsaustausch geschieht auf dem
+öffentlichen und unsicheren Kanal. 
+
+
+\bigskip
+\textbf{Schritt 5.} Zu diesem Zeitpunkt besitzt A die Information $a$
+und $b\cdot P$. Nun berechnet A den neuen Punkt
+\begin{equation*}
+  a\cdot (b\cdot P) \in E(\IF_p).
+\end{equation*}
+Auf der anderen Seite des Kanals berechnet B den Punkt
+\begin{equation*}
+  b\cdot (a\cdot P) \in E(\IF_p).
+\end{equation*}
+
+Nun sind wir am Ziel. Da $E(\IF_p)$ eine Gruppe ist,
+gilt
+$$
+a\cdot (b\cdot P) = (ab)\cdot P = (ba) \cdot P = b\cdot (a\cdot P).$$
+
+Das gemeinsame Geheimnis ist der Punkt $(ab)\cdot P$. Diese kann als
+Grundlage für die Festlegung eines Schlüssel für ein symmetrisches
+Verfahren genutzt werden.
+
+Dieses Verfahren ist zur Zeit sicher, da es  keinen  effizienten Weg
+gibt, den Wert $a$ (modulo $\mathrm{ord}(P)$)
+aus $a\cdot P$ zu rekonstruieren. Diese Problem nennt sich
+\emph{diskreter Logarithmus}.
+
+In der Praxis ist $\mathrm{ord}(P)$
+von der Grössenordnung $2^{256}$. Einfaches ``Absuchen'' von $a$ ist
+nicht praktikabel.
+
+Dennoch ist es nicht ausgeschlossen,
+dass es einen noch unbekannten und
+effizienten Zugang zum diskreten Logarithmus gibt. Dabei bedeutet
+``effizient'' ein Algorithmus der mit hoher Wahrscheinlichkeit $a$
+produziert und zwar in $(\log p)^C$ Rechenschritt für eine Konstante
+$C$.
+
+Im Jahr 1994 hat Peter Shor einen ``Quantum-Algorithmus'' entwickelt,
+welcher den Diffie-Hellman Schlüsselaustausch unsicher macht, sobald
+man einen hinreichend mächtigen Quantumcomputer bauen kann.
+Kurzum, die zukunftige Bedeutung des Diffie-Hellman
+Schlüsselaustausches ist offen.  
+
+
+\section{Lenstras Verfahren}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
+
