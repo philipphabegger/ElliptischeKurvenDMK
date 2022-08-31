@@ -6,7 +6,7 @@ In dieser Repository finden Sie verschiedene Unterlagen zur Veranstaltung. Darun
 * ein Vorlesungskript und
 * Implementationen in SageMath / CoCalc von einige Algorithmen. 
 
-Der Inhalt wird zur Zeit noch erstellt, es kann sein, dass noch nicht alles verfügbar ist. 
+# ACHTUNG: Der Inhalt wird zur Zeit noch erstellt. Es kann sein, dass noch nicht alles verfügbar ist und/oder dass es Fehler gibt.  
 
 Links
 -----
