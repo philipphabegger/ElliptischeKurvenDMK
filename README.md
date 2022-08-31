@@ -2,9 +2,11 @@ Weiterbildungsveranstaltung der Deutschschweizerische Mathematik-Kommission
 # Elliptische Kurven und ihre Anwendung in der Kryptographie
 gehalten von Philipp Habegger am 8. September 2022 
 
-In dieser Repository finden Sie das Unterlagen zur Veranstaltung. Darunter
+In dieser Repository finden Sie verschiedene Unterlagen zur Veranstaltung. Darunter
 * ein Vorlesungskript und
-* Implementationen in Sage/CoCalc von einige Algorithmen. 
+* Implementationen in SageMath / CoCalc von einige Algorithmen. 
+
+Der Inhalt wird zur Zeit noch erstellt, es kann sein, dass noch nicht alles verfügbar ist. 
 
 Links
 -----
