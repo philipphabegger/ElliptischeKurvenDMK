@@ -9,7 +9,7 @@ In dieser Repository finden Sie das Unterlagen zur Veranstaltung. Darunter
 Links
 -----
 
-[Sage Open Source CAS](https://www.sagemath.org/)
+[SageMath (Open-source CAS)](https://www.sagemath.org/)
 
 [CoCalc](https://cocalc.com/)
 
