@@ -5,8 +5,10 @@
 \usepackage{graphicx}
 \usepackage[ngerman]{babel}
 \usepackage{bigfoot} %% Für grosse Fussnoten
+\usepackage{makeidx}
 
 \input{macros.tex}
+\makeindex
 
 \begin{document}
 
@@ -14,7 +16,9 @@
 \subtitle{DMK-Weiterbildung vom 8. September 2022}
 \author{Philipp~Habegger \\ Departement Mathematik und Informatik
  \\ Universität Basel \\ \texttt{philipp.habegger@unibas.ch}}
-\date{\small{Revision vom \today{} um \currenttime}}
+\date{\small{Revision vom \today{} um
+    \currenttime}}%\\\texttt{\input{{.git/refs/heads/master}}}}
+
 
 \maketitle
 \tableofcontents
@@ -34,6 +38,9 @@
 \bibliographystyle{alpha}
 \bibliography{literature}
 
-\vfill\hfill\texttt{\input{.git/refs/heads/master}}
+%\vfill\hfill
+\printindex
+
+
 
 \end{document}

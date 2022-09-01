@@ -6,8 +6,8 @@ elliptischer Kurven:
 
 \begin{itemize}
 \item Der Diffie-Hellman Schlüsselaustausch mit elliptischen Kurven
-\item Lenstras (statistisches)
-  Faktorisierungsverfahrung für natürliche Zahlen
+\item Lenstras (probabilistisches)
+  Faktorisierungsverfahren für natürliche Zahlen
 \end{itemize}
 
 Für beide Anwendungen arbeiten wir nicht, wie in den ersten
@@ -28,7 +28,7 @@ nicht-abhörsichere Telefonleitung sein oder die beiden kommunizieren
 einigen. In den Anwendungen ist dieses gemeinsame Geheimnis z.B. der
 Schlüssel für ein symmetrisches Verschlüsselungsverfahren wie 
 AES. Sobald dieser gemeinsame Schlüssel beiden vorliegt, können A
-und B also ungestört, d.h. verschlüssel miteinander kommunizieren. Bei
+und B  verschlüsselt miteinander kommunizieren. Beim
 Bilden des gemeinsamen Schlüssels müssen A und B davon ausgehen, dass
 Unbekannte zuhören. Es soll schlussendlich verhindert werden, dass
 diese keinen Rückschlüsse auf das Geheimnis machen können.
@@ -40,20 +40,22 @@ Der Schlüsselaustausch funktioniert wie folgt.
 eine grosse Primzahl $p$ und damit einen endlichen Körper $\IF_p$ fest.
 Sie einigen sich weiterhin auf eine elliptische Kurve
 $$E: Y^2 = X^3+aX+b$$
-wobei $a,b\in\IF_p$ und auf einen rationalen Punkt $P\in
+wobei $a,b\in\IF_p$ und auf einen Punkt $P\in
 E(\IF_p)\ssm\{\cO\}$. Die Sicherheit wird gewährleistet, wenn $p$
-``gross'' ist und wenn die Ordnung of $P$ als Element der abelschen
+``gross'' ist und wenn die Ordnung von $P$ als Element der abelschen
 Gruppe auch eine grosse  Primzahl.  
-\footnote{Der Einfachheitshalber arbeiten wir hier
+\footnote{Der einfachheitshalber arbeiten wir hier
   mit nicht mit langen Weierstrass-Gleichungen. In Anwendungen kommt
   z.B. die Primzahl 
- $p = 2^{255-19}$ und die elliptische Kurve
+ $p = 2^{255}-19$ und die elliptische Kurve
   $E: Y^2 = X^3+486662X^2+X$ mit langer Weierstrass-Gleichung vor. Der
 rationale Punkt $P$ hat die Form $(9,*)$. Er erzeugt eine Untergruppe
 von $E(\IF_p)$ dessen Ordnung die Primzahl $\#E(\IF_p)/8$ ist.}
 Die gesamte Information $(p,E,P)$ ist an dieser Stelle rein
-öffentlich. A und B müssen davon ausgehen, dass dritte Zugriff auf
+öffentlich. 
+A und B müssen davon ausgehen, dass dritte Zugriff auf
 diese Information haben.
+Sie gilt sogar Standardwahlen dieses Tripels in den Implementationen.
 
 \bigskip
 \textbf{Schritt 2.} In diesem Schritt wählt A per Zufall eine
@@ -63,9 +65,9 @@ $$
 a\cdot P = \underbrace{P+P+P+\cdots + P}_{\text{$a$ mal}}.
 $$
 
-Diese Berechnung lässt sich wie folgt effizient gesalten.
+Diese Berechnung lässt sich wie folgt effizient gestalten.
 Ist die Entwicklung von $a$ zur Basis $2$ durch $\sum_{i} a_i 2^i$ mit
-$a_{i}\in \{0,1\}$, so gilt
+$a_{i}\in \{0,1\}$ gegeben, so gilt
 $$
 a\cdot P =\sum_{i : a_i=1} 2^i \cdot P.$$
 Also lässt sich $a \cdot P$ rein aus der  Addition $E(\IF_p)\times
@@ -78,10 +80,12 @@ bestimmen.
 $b$. Daraufhin berechne $B$ den Punkt $b\cdot P \in E(\IF_p)$.
 
 \bigskip
-\textbf{Schritt 4.} Bis anhin wurde noch keine Information zwischen A
-und B ausgetausch (bis auf die Wahl von $(p,E,P)$.)
-In Schritt 4 schickt A den Punkt $a\cdot P$ and B und B schickt
-$b\cdot P$ an A. Der Informationsaustausch geschieht auf dem
+\textbf{Schritt 4.} Bis an hin wurde noch keine Information zwischen A
+und B ausgetauscht (bis auf die Wahl von $(p,E,P)$ die öffentliche
+Information ist.)
+In Schritt 4 schickt A den Punkt $a\cdot P$ an B. Gleichzeitig schickt
+B den Punkt
+$b\cdot P$ an A. Dieser Informationsaustausch geschieht auf dem
 öffentlichen und unsicheren Kanal. 
 
 
@@ -105,6 +109,8 @@ Das gemeinsame Geheimnis ist der Punkt $(ab)\cdot P$. Diese kann als
 Grundlage für die Festlegung eines Schlüssel für ein symmetrisches
 Verfahren genutzt werden.
 
+\bigskip
+
 Dieses Verfahren ist zur Zeit sicher, da es  keinen  effizienten Weg
 gibt, den Wert $a$ (modulo $\mathrm{ord}(P)$)
 aus $a\cdot P$ zu rekonstruieren. Diese Problem nennt sich
@@ -114,23 +120,198 @@ In der Praxis ist $\mathrm{ord}(P)$
 von der Grössenordnung $2^{256}$. Einfaches ``Absuchen'' von $a$ ist
 nicht praktikabel.
 
-Dennoch ist es nicht ausgeschlossen,
-dass es einen noch unbekannten und
-effizienten Zugang zum diskreten Logarithmus gibt. Dabei bedeutet
+Dennoch ist es nicht ausgeschlossen, dass es einen noch unbekannten
+und effizienten Zugang zum diskreten Logarithmus gibt. Dabei bedeutet
 ``effizient'' ein Algorithmus der mit hoher Wahrscheinlichkeit $a$
 produziert und zwar in $(\log p)^C$ Rechenschritt für eine Konstante
 $C$.
 
-Im Jahr 1994 hat Peter Shor einen ``Quantum-Algorithmus'' entwickelt,
-welcher den Diffie-Hellman Schlüsselaustausch unsicher macht, sobald
-man einen hinreichend mächtigen Quantumcomputer bauen kann.
-Kurzum, die zukunftige Bedeutung des Diffie-Hellman
-Schlüsselaustausches ist offen.  
-
+Im Jahr 1994 hat Peter Shor~\cite{shor} einen ``Quantum-Algorithmus'' entwickelt,
+welcher den Diffie-Hellman Schlüsselaustausch unsicher macht, sollte
+ein hinreichend mächtiger Quantencomputer zur Verfügung stehen.
+Kurzum, die zukünftige Bedeutung des Diffie-Hellman
+Schlüsselaustausches ist offen.
 
 \section{Lenstras Verfahren}
 
-%%% Local Variables:
+Gegeben sei eine natürliche zusammengesetzte Zahl $n\ge 2$.
+Die Sicherheit des kryptographischen Verfahren RSA beruht auf der (angeblichen)
+Schwierigkeit einen Primfaktor von $n$ zu finden.\footnote{Im
+  konkreten Fall von RSA ist $n$ ein Produkt $pq$ aus zwei
+  verschiedenen Primzahlen
+  der Grössenordnung $2^{2048}$.}
+
+
+Da $n$ zusammengesetzt ist, besitzt $n$ einen Primzahl $p$, so dass
+$p\le \sqrt{n}$. Durch simples ausprobieren kann man mit ca. $\sqrt n$
+ggT-Operationen $p$ finden. Aber für $n\cong 2^{2048}$ sind das ca.
+$2^{1024}> 10^{300}$ Operationen. 
+
+Lenstras Faktorisierungsverfahren ist ein probabilistischer
+Algorithmus, um in Laufzeit ca. $e^{\sqrt{2\log n}\sqrt{\log\log n}}$
+einen Primfaktor von $n$ zu finden. ``Probabilistisch'' bedeutet, dass
+der Algorithmus mit ``grossen Wahrscheinlich'' zum Ziel führt. D.h. es
+ist nicht mathematisch gesichert, dass der gesuchte Faktor gefunden
+wird. Aber dennoch ist es aus sicherheits-theoretischen Überlegungen
+wichtig, solche Algorithmen bei der Wahl eines kryptographischen
+Systems zu berücksichtigen.
+
+In der gleichen Arbeit~\cite{shor} hat Shor gezeigt, dass das
+Faktorisierungsproblem für einen hinreichen starken Quantencomputer
+in polynomialer Zeit (in $\log n$) bewältigbar ist.
+
+Lentsras Faktorisierungsverfahren beruht auf der Theorie
+elliptischer Kurven. Nun müssen wir jedoch einen Schritt weiter gehen
+als bis an hin. Wir betrachten Weierstrass-Gleichungen mit
+Koeffizienten in einem Ring, hier typischerweise $\IZ/n\IZ$. Da
+$n$ in der Problemstellung gerade keine Primzahl ist, ist $\IZ/n\IZ$
+kein Körper, es ist ein kommutativer Ring mit (nicht-trivialen)
+Nullteiler. Wir werden nicht die Theorie elliptischer Kurven über
+einem Ring entwickeln,\footnote{Solche Objekte heissen
+  \emph{elliptische Schemata} oder \emph{abelsche Schemata}}
+sondern  \textit{ad hoc} so rechnen, wie wir das in Abschnitt
+\ref{kap:ek} über einem Körper beschrieben haben. Dabei sind einige
+Vorkehrungen nötig, um Nullteiler zu berücksichtigen. Es sind aber
+gerade die Nullteiler von $\IZ/n\IZ$, welche Rückschlüsse auf die
+Primfaktoren von $n$ schliessen lassen.
+
+Wir werden die folgende Notation verwenden. Gegeben sei $n\in\IN$. Eine ganze Zahl $a\in\IZ$
+ repräsentiert eine Nebenklasse
+$$
+\overline a = a+n\IZ\in \IZ/n\IZ.
+$$
+Also verwenden wir $\overline a$ um die Nebenklasse zu beschreiben. 
+
+Gegeben seien $a,b\in\IZ$ und die Gleichung $E : Y^2= X^3+\overline a
+X + \overline b$ mit Koeffizienten in $\IZ/n\IZ$. Wir können die
+Diskriminante
+$$\Delta_E = \overline{-2^4(4a^3+27b^2)}\in\IZ/n\IZ$$ definieren. Aber die Bedingung $\Delta_E\not=0$
+reicht in dieser Situation nicht aus, um $E$ als ``elliptische Kurve''
+bezeichnen zu dürfen, den $\IZ/n\IZ$ besitzt Nullteiler. Wir brauchen
+die stärkere Bedingung $\Delta_E \in (\IZ/n\IZ)^\times$, dabei
+bezeichnet $(\IZ/n\IZ)^\times$ die Elemente in $\IZ/n\IZ$ die sich
+multiplikativ invertieren lassen.\footnote{Für $n$ eine Primzahl ist $\IZ/n\IZ$
+ein Körper und die Bedingung ist mit $\Delta_E\not=0$ gleichbedeutend.}
+Es gilt
+\begin{equation}
+  \label{eq:ggTDeltaE}
+  \Delta_E \in (\IZ/n\IZ)^\times\Longleftrightarrow
+  \mathrm{ggT}(-2^4(4a^3+27b^2),n) = 1.
+\end{equation}
+
+In der Praxis lässt sich der ggT sehr effizient mittels Teilung
+mit Rest berechnen. 
+Diese Aussage ist für unser Anliegen interessant.  Sollte $\Delta_E$
+\emph{keine} Einheit sein, dann haben die ``nicht reduzierte''
+Diskriminante $-2^4(4a^3+27b^2)$ und $n$ einen gemeinsamen Teiler
+$d>1$. Nun gibt es zwei Fälle:
+
+\begin{itemize}
+\item \textbf{Fall 1: Es gilt  $d=n$.}  In diesem Fall haben wir leider
+  nichts gewonnen
+\item \textbf{Fall 2: Es gilt  $d<n$.}
+  Dann ist $d$ ein echten Teiler
+  von $n$. Um ein Primfaktor von $n$ zu finden, reicht es, einen
+  Primfaktor von $d$ zu finden. Da $d\le n/2$ hat sich das Problem durch
+  diesen Schritt exponentiell vereinfacht. Ist $n=pq$ das Produkt verschiedener
+  Primzahlen $p$ und $q$ (wie in RSA), so gilt sogar $d=p$ oder $d=q$.
+\end{itemize}
+
+Nun beschreiben wir eine vereinfachte Version von Lentras Verfahren.
+Gegeben sie $n=pq\in\IN$
+das Produkt zweier Primzahlen $p\not=q$. 
+
+\bigskip
+\textbf{Schritt 1}. Wir wählen zufällig $\overline a,\overline
+x,\overline y\in\IZ/n\IZ$, repräsentiert durch $a,x,y\in \{0,\ldots,n-1\}$. 
+Dann definieren wir
+$$
+b = y^2 - x^3 - ax\in \IZ.
+$$
+Das Paar $(\overline x,\overline y)$ ist eine Nullstelle von $Y^2 -
+(X^3+\overline a X +\overline b)$.
+
+\bigskip
+\textbf{Schritt 2}. Wir berechnen $\Delta = -2^4(4a^3+27b^2)\in\IZ$.
+Falls $\mathrm{ggT}(\Delta,n)>1$, d.h. $\overline\Delta$ ist
+\emph{keine} Einheit in $\IZ/n\IZ$, so verwenden wir die Überlegung
+direkt unterhalb von (\ref{eq:ggTDeltaE}).
+Im (unwahrscheinlichen) Fall 1 kehren wir zurück zu Schritt 1 und wählen eine neue Kurve.
+Alternativ kann man Fall 1 a priori ausschliessen, wenn man die
+Repräsentanten $a,x,y\in \{0,\ldots,n\}$ klein genug in Funktion von
+$n$ wählt, um $|\Delta|<n$ zu erzwingen.
+
+Im Fall 2 muss $d=p$ oder $d=q$ gelten. Wir sind fertig, da ein
+Primfaktor von $n$ berechnet wurde. Hier ist entscheidend, dass sich
+der ggT schnell berechnen lässt.
+
+Also können wir für das weitere Vorgehen annehmen, dass
+$\Delta_E\in(\IZ/n\IZ)^\times$. Damit definiert
+$E : Y^2 - (X^3+\overline a X + \overline b)$ eine elliptische Kurve
+mit Koeffizienten in $\IZ/n\IZ$.
+
+\bigskip
+\textbf{Schritt 3}. Wir betrachten das Paar $(\overline x,\overline y)$
+als Punkt $P$ in $E(\IZ/n\IZ)$. 
+Die in Abschnitt~\ref{kap:ek}, Abschnitt \ref{sec:verknuepfung},
+beschriebene Verknüpfung kann man
+ad hoc auf die  
+Punkte in  $E(\IZ/n\IZ)$ anzuwenden.
+Unser Ziel ist es, ein Vielfaches $k \cdot P$ zu berechnen, dabei ist
+$k\in\IN$ eine natürliche Zahl.
+
+Um das effizient zu gestalten, entwickeln wir $k$, wie beim
+Diffie-Hellman Schlüsselaustausch, zur Basis $2$. D.h. wir schreiben
+$k=\sum_{i} k_i 2^i$ mit
+$k_{i}\in \{0,1\}$. Wir möchten 
+$$
+\sum_{i : k_i=1} 2^i \cdot P
+$$
+bestimmen.
+
+Insgesamt müssen wir auf $E(\IZ/n\IZ)$   zwei Punkte addieren können.
+Da aber $\IZ/n\IZ$ kein Körper ist, darf nicht durch ein Element
+ungleich Null dividiert werden. Es gibt  Nullteiler. 
+Z.B. im Unterfall 1a wird bei der Konstruktion der Steigung $m$ durch
+die Differenz $x_1-x_2$. Oder im Unterfall 2a, bei der Verdoppelung,
+wird durch $2y$ geteilt.
+
+Teilen ist jedoch nur erlaubt, wenn das entsprechende Element in
+$(\IZ/n\IZ)^\times$ liegt. D.h. bei jeder Teilung müssen wir
+überprüfen, dass der ggT eines Repräsentanten in $\IZ$, von $x_1-x_2$ oder $2y$,
+zu $n$ gleich $1$ ist. Ist der ggT gleich $1$, so dürfen wir teilen
+und die Berechnung durchführen.
+Ist der ggT $d$ jedoch $>1$ so sind wir wieder in einer
+Fallunterscheidungen wie unterhalb von (\ref{eq:ggTDeltaE}).
+
+Sollte $d=n$ gelten haben wir ``Pech''. Wir müssen das Verfahren neu
+bei Schritt 1 mit einer neuen Wahl von $\overline a,\overline
+x,\overline y$ starten. Es scheint schwierig, diesen unglücklichen
+Ausgang a priori auszuschliessen. Deshalb ist dieser Algorithmus
+``probabilistisch''.
+
+Gilt jedoch $1<d<n$, so muss (da $n=pq$) $d=p$ oder $d=q$. In diesem
+Fall sind wir fertig, da ein Primfaktor gefunden wurde.
+
+\bigskip
+
+Die genaue Wahl von $k$ spielt für die Analyse des Algorithmus eine
+wichtig Rolle auf die wir hier nicht eingehen werden. Es stellt sich
+als vorteilhaft heraus, für $k$ ein Produkt von vielen ``kleinen''
+Primzahlen zu wählen.
+
+Eine einfache Implementation dieses Verfahrens ist als SageMath Skript
+auf der GitHub repository in
+\begin{center}
+\texttt{sage/primfaktorisierung\_lenstra.ipynb}  
+\end{center}
+ zu finden. Hier wurde $k=10!$ festgelegt.
+
+
+
+
+
+%%% local Variables:
 %%% TeX-master: "main"
 %%% End:
 
