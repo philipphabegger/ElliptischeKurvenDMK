@@ -1,0 +1,104 @@
+\chapter{Komplexe Multiplikation}
+
+Eines der faszinierendsten Aspekte der Theorie elliptischer Kurven ist
+die Möglichkeit komplexer Multiplikation. Diese soll nur an einigen
+Beispielen veranschaulicht werden.
+
+Wir beginnen mit einer Weierstrass-Gleichung $E : Y^2=X^3+aX+b$ mit
+$a,b$ in einem beliebigen Körper $K$. Wie um (\ref{eq:amultP}) beschrieben,
+können wir Punkt $P\in E(K)$ mit ganzen Zahlen multiplizieren, z.B.
+$2P = P+P$ und $3P = P+P+P$ etc. Dies ist  in jeder Gruppe möglich.
+
+\begin{beispiel}
+  Wir betrachten die elliptische Kurve die durch  $E: Y^2 = X^3+X$
+  definiert ist. Der Grundkörper $K$ sei nun $\IC$.
+  Sei $(x,y)\in\IC^2$ eine Nullstelle von $Y^2 = X^3+X$. Dann gilt
+  \begin{equation*}
+    (\sqrt{-1} y)^2 = -y^2 = -(x^3+x) = (-x)^3+(-x). 
+  \end{equation*}
+  Also ist $(-x,\sqrt{-1}y)$ wieder eine Nullstelle der
+  Weierstrass-Gleichung. 
+  Für jeden Punkt $P\in E(\IC)$ definiert man
+  \begin{equation*}
+    I(P) = \left\{
+      \begin{array}{ll}
+        (-x, \sqrt{-1}y)         &: P = (x,y) \\
+        \cO &: P = \cO.
+      \end{array}\right.
+  \end{equation*}
+  Damit erhalten wir eine Selbstabbildung $I\colon E(\IC)\rightarrow
+  E(\IC)$.
+
+  Verkettet man $I$ mit sich selbst, so erhält man 
+  \begin{equation*}
+    I(I(P)) = (x,-y)
+  \end{equation*}
+  falls $P\not=\cO$. Also ist $I\circ I$ die Inversionsabbildung
+  $-\colon E(\IC)\rightarrow E(\IC)$.
+
+  In geeigneter Notation gilt $I^2 = I\circ I = -1$. 
+
+  Man kann nun überprüfen, z.B. von Hand, dass $I$ mit dem
+  Gruppengesetz kompatibel ist. D.h. es gilt
+  \begin{equation*}
+    I(P+Q) = I(P)+I(Q) \quad\text{für alle}\quad P,Q\in E(\IC). 
+  \end{equation*}
+
+  Schliesslich kann man weiter und für $\alpha,\beta\in\IZ$ eine
+  weiter Selbstabbildung von $E(\IC)$ gemäss
+  \begin{equation*}
+    (\alpha + I \beta)(P) = (\alpha \cdot P) + (\beta \cdot I(P))
+  \end{equation*}
+  definieren. 
+
+  Wie identifizieren die Menge $\{\alpha + I\beta :
+  \alpha,\beta\in\IZ\}$ der eben definierten Selbstabbildung mit den
+  Gaussschen Zahlen
+  \begin{equation*}
+    \IZ[\sqrt{-1}] = \{\alpha + \sqrt{-1}\beta : \alpha,\beta\in\IZ\}.
+  \end{equation*}
+
+  Wir erhalten eine Verknüpfung
+  \begin{equation*}
+    \IZ[\sqrt{-1}]\times E(\IC)\rightarrow E(\IC)
+  \end{equation*}
+  welche es uns erlaubt, Punkte in $E(\IC)$ mit Gausssche Zahlen zu
+  multiplizieren. Für festes $\gamma\in\IZ[\sqrt{-1}]$ ist der
+  Ausdruck $\gamma\cdot P$ ein komplizierter Bruch von Polynomen in
+  den Koordinaten von $P$.
+
+  Nicht jede elliptische Kurve erlaubt komplexe Multiplikation. In der
+  Tat gibt es (in einem geeigneten Sinn) nur eine elliptische Kurve,
+  die komplexe Multiplikation mit $\IZ[\sqrt{-1}]$ wie oben erlaubt.
+\end{beispiel}
+
+\begin{aufgabe}
+  Überprüfen Sie mit der Definition, dass in der Notation des
+  Beispiels oben $I(P+Q) = I(P)+I(Q)$ für alle $P,Q\in E(\IC)$ gilt.
+\end{aufgabe}
+
+Es gibt auch eine elliptische Kurven, die ``komplexe Multiplikation'' mit
+dem Ring der Eisenstein Zahl
+\begin{equation*}
+  \left\{\alpha +\beta e^{2\pi\sqrt{-1}/6} : \alpha,\beta\in\IZ\right\}
+\end{equation*}
+hat. Im Allgemeinen taucht jede ``quadratische Ordnung'', darunter
+z.B. auch
+\begin{equation*}
+  \left\{\alpha +\beta \frac{1+\sqrt{-163}}{2} : \alpha,\beta\in\IZ\right\}
+\end{equation*}
+
+Die Theorie der ``komplexen Multiplikation'' von elliptischen Kurven und deren
+Verallgemeinerung begann im 19ten Jahrhundert und spielt auch noch
+heute in der Grundlagenforschung eine zentrale Rolle~\cite{quanta:ao}.
+
+Komplexe Multiplikation liefert auch eine überzeugende Erklärung,
+wieso  
+\begin{equation*}
+  e^{\sqrt{163}\pi} = 262537412640768743,9999999999992500725971\ldots
+\end{equation*}
+fast die ganze Zahl  $640320^3 + 744$ ist.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

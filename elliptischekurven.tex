@@ -6,7 +6,7 @@ Teil des Datums einer elliptischen Kurve ist ein Grundkörper $K$. Dies
 ist a priori ein beliebiger Körper. Aber für uns sind die wichtigsten
 Wahlen von Grundkörper die rationalen Zahlen $\IQ$, die reellen Zahlen
 $\IR$ und die komplexen Zahlen $\IC$. Für Anwendungen in der
-Krytographie spielen  die endlichen Körper eine zentrale Rolle.
+Kryptographie spielen  die endlichen Körper eine zentrale Rolle.
 
 
 Es sei angemerkt, dass die Theorie elliptische Kurven im
@@ -37,8 +37,8 @@ Aspekte.
   Die Grösse $\Delta_E$, ein Element aus $K$, heisst
   \emph{Diskriminante}\index{Diskriminante einer Weierstrass-Gleichung}
   der Weierstrass-Gleichung $E$. Zur Weierstrass-Gleichung $E$ gehört
-  das Weierstrass-Polynom\footnote{Diese Beizeichnung ist nicht
-    standard.} $Y^2- (X^3+aX+b)$.
+  das Weierstrass-Polynom\footnote{Diese Bezeichnung ist nicht
+    Standard.} $Y^2- (X^3+aX+b)$.
 \end{definition}
 
 \begin{beispiele}\leavevmode
@@ -61,7 +61,7 @@ Aspekte.
   $a,b\in K$. Dann ist $Y^2 = X^3+aX+b$ keine Weierstrass-Gleichung,
   da (\ref{eq:disccondition}) nicht erfüllt ist. In $K$ gilt $2=0$.
 
-  Das ist  unbefriedigend, da für Anwendung in der Kryptographe
+  Das ist  unbefriedigend, da für Anwendung in der Kryptographie
   endliche Körper 
   der Charakteristik $2$ wichtig sind. Um Charakteristik $2$ (und auch
   $3$) abzudecken, muss man die Definition von Weierstrass-Gleichung
@@ -162,7 +162,7 @@ definiert, es ist kein Grenzwertbegriff notwendig.
   \end{equation*}
   
   Also hat $t\mapsto F(x+t\alpha,y+t\beta)$ eine mehrfache Nullstelle
-  bei $t=0$. Dies bedeutet, dass $T$ die Tangent an der
+  bei $t=0$. Dies bedeutet, dass $T$ die Tangente an der
   Nullstellenmenge von $F$ ist.
 
   Zusammengefasst: die Gerade durch $(x,y)$ mit Richtungsvektor
@@ -175,7 +175,7 @@ definiert, es ist kein Grenzwertbegriff notwendig.
 Die Schlussfolgerung von Lemma~\ref{lem:smooth} besagt, dass die
 Nullstellenmenge einer Weierstrass-Gleichung an jedem Punkt einer
 Bedingung genügt, welche sich zumindest im reellen Fall
-als ``Glattheitsbedigung'' verstehen lässt.
+als ``Glattheitsbedingung'' verstehen lässt.
 
 \begin{definition}
   \label{def:tangentensteigung}
@@ -213,7 +213,7 @@ $F(x+t,y+mt)$ bei $t=0$ eine Nullstelle der Ordnung $\ge 2$ hat.
 In diesem Abschnitt werden wir zeigen, wie man auf der Lösungsmenge
 einer Weierstrass-Gleichung zusammen mit einem zusätzlichen Punkt,
 eine Gruppenstruktur definieren kann. Die Konstruktion kann man rein
-geometrisch veraschaulichen. Wie oben bezeichnet $K$ ein Körper in dem
+geometrisch veranschaulichen. Wie oben bezeichnet $K$ ein Körper in dem
 sich alles abspielt (sofern nicht anders vermerkt). 
 
 \begin{definition}
@@ -259,8 +259,8 @@ Später werden wir feststellen, dass die so konstruierte Gruppe eine
 abelsche Gruppe ist. 
 
 Seien $P$ und $Q$ Elemente von $E(K)$. Es folgt eine Aufspaltung in
-verschiendene Fälle. Wir werden bereits in der Konstruktion
-überprüfen, dass die Verküpfung $+$ die Bedingung
+verschiedene Fälle. Wir werden bereits in der Konstruktion
+überprüfen, dass die Verknüpfung $+$ die Bedingung
 $$
 P+Q=Q+P\quad\text{für alle}\quad P,Q\in E(K) 
 $$
@@ -277,7 +277,7 @@ Wir unterscheiden zwei Unterfälle.
 
 \textbf{Unterfall 1a. Es gilt $x_1\not=x_2$.} In diesem Fall hat die
 Gerade $G$ (endliche) Steigung $m = \frac{y_2-y_1}{x_2-x_1}\in K$. In
-anderen Worten, sie hat die Gesalt
+anderen Worten, sie hat die Gestalt
 \begin{equation*}
   G = \{(x,mx+q) : x\in K \}
 \end{equation*}
@@ -294,7 +294,7 @@ gestrichelt.
 Daher sind $P$ und $Q$ Schnittpunkte der Gerade $G$ mit der Menge
 $E(K)\ssm \{\cO\}$. Mit Vielfachheiten gezählt hat die Gerade $G$
 jedoch drei Schnittpunkte mit der Lösungsmenge von $Y^2=X^3+aX+b$. Wir
-können dies wie folgt direkt überprüfen. Dazu defineren wir
+können dies wie folgt direkt überprüfen. Dazu definieren wir
 das Polynom
 \begin{equation*}
   A = (mX+q)^2 - (X^3+aX+b) =-X^3+m^2X +\text{(Terme von Grad $\le 1$ in $X$)}
@@ -362,7 +362,7 @@ eine Folge von Punkten $(Q_n)_{n\in\IN}$ aus $E(\IR)\ssm\{Q,\cO\}$, dessen
 Koordinaten für $n\rightarrow\infty$ gegen $Q=P$ konvergieren.
 Die Gerade $G_n$ durch $P$ und $Q_n$ ist wohldefiniert und die Summe
 $P+Q_n$ lässt sich mit der Vorschrift aus Fall 1 bestimmen.
-Anschaulich nähert sich die Gerade $G_n$ der Tangente and
+Anschaulich nähert sich die Gerade $G_n$ der Tangente an
 $E(\IR)\ssm\{\cO\}$ durch den Punkte $P$. Vgl.
 Abbildung~\ref{fig:unterfall2a}. 
 
@@ -374,7 +374,7 @@ Abbildung~\ref{fig:unterfall2a}.
 \end{figure}
 
 Für einen allgemeinen Körper können wir zwar nicht mit solchen
-Grenzbegriffen argumentieren, aber wir haben einen Ersatz für die
+Grenzwertbegriffe argumentieren, aber wir haben einen Ersatz für die
 Tangente in Bemerkung~\ref{bem:tangente} und Definition
 \ref{def:tangentensteigung}
 gefunden.
@@ -403,7 +403,7 @@ definieren wir
   P+Q = P+P = \left(x',-y'\right).
 \end{equation*}
 
-Trivialierweise gilt $P+Q=Q+P$ in diesem Unterfall.
+Trivialerweise gilt $P+Q=Q+P$ in diesem Unterfall.
 
 \textbf{Unterfall 2b: Es gilt $P=Q\not=\cO$ und $P=(x,0)$.}
 Im Fall $y=0$ ist die Tangente durch $P$ and $E(K)$ parallel zur
@@ -412,7 +412,7 @@ definieren
 \begin{equation*}
   P+Q = P+P = (x,0)+(x,0) = \cO. 
 \end{equation*}
-Trivialierweise gilt $P+Q=Q+P$ in diesem Unterfall.
+Trivialerweise gilt $P+Q=Q+P$ in diesem Unterfall.
 
 \textbf{Unterfall 2c: Es gilt $P=\cO\not=Q$.}
 Wir definieren 
@@ -426,7 +426,7 @@ Dieser Fall ist analog zu Unterfall 2b, wir definieren hier
 \begin{equation*}
   P+Q = P+\cO = P. 
 \end{equation*}
-Vergleicht mah Unterfälle 2b und 2c, so sehen wir $P+Q=Q+P$, falls
+Vergleicht man Unterfälle 2b und 2c, so sehen wir $P+Q=Q+P$, falls
 $P=\cO$ oder $Q=\cO$. 
 
 
@@ -484,11 +484,11 @@ P + (Q + R) = (P+Q)+R$$
 für alle $P,Q,R\in E(K)$ hinaus.
 
 Das ist ein nicht-trivialer Schritt den wir hier nicht beweisen
-werden. Es gibt mehrere Ansätz die Assoziativität zu zeigen.
+werden. Es gibt mehrere Ansätze die Assoziativität zu zeigen.
 Naheliegend ist es, die Gleichheit mit der Definition direkt zu
 überprüfen. Das ist im Prinzip möglich. Dazu müssen jedoch die vier
 Verknüpfungen $Q+R, P+(Q+R), P+Q$ und $(P+Q)+R$ gebildet werden.
-Pro Verknüpfung gibt es $7$ Fälle zu unterscheiden. D.h. ingesamt gibt
+Pro Verknüpfung gibt es $7$ Fälle zu unterscheiden. D.h. insgesamt gibt
 es $7^4= 2041$ Fälle. Obwohl einige Fälle trivialerweise stimmen, ist
 ein systematisches Arbeiten mit viel Aufwand verbunden.
 
@@ -502,16 +502,110 @@ konstruieren, welche die oben dargestellte Verknüpfung mit dem
 Gruppengesetz der Picard-Gruppe in Verbindung setzt.
 
 
+Wie in jeder Gruppe kann man Elemente mit ganzen Zahlen
+``multiplizieren''. Seien $E$ und $K$ wie oben und weiterhin $P\in
+E(K)$ ein Punkt. Für eine ganze Zahl $a\ge 0$ schreiben wir
+\begin{equation}
+  \label{eq:amultP}
+  a\cdot P = \underbrace{P+ P+\cdots +P}_{\text{$a$-mal}} \in E(K).
+\end{equation}
+Also $2\cdot P = P+P, 3\cdot P = P+P+P$, etc. Z.T. lassen wir den
+Punkt $\cdot$ in der Schreibweise weg. 
+Für eine negative ganze Zahl $a<0$ definieren wir
+\begin{equation*}
+  a\cdot P = (-a) \cdot P. 
+\end{equation*}
+
+Damit ist $a\cdot P$ für alle $a\in\IZ$ definiert. Es gilt eine
+Variante der Assoziativität
+\begin{equation}
+  \label{eq:actionofZ}
+  a \cdot (b\cdot P) = (ab)\cdot P 
+\end{equation}
+für alle $a,b\in\IZ$.\footnote{Es ist zu beachten, dass hier
+  Verknüpfung auftauchen. Einerseits die gerade eben definierte
+  Verknüpfung $\IZ\times E(K)\rightarrow E(K)$ und andererseits für
+  $ab$ die
+  Multiplikation auf $\IZ$.} Auch diese Gleichung gilt in allen Gruppen.
+
 \begin{bemerkung}
   Die Verknüpfung $E(K)\times
   E(K)\rightarrow E(K)$ sowie die Inversion $E(K)\rightarrow E(K)$
   werden mit der Hilfe von 
   Quotienten von Polynomen mit Koeffizienten in $K$ beschrieben.
 
-  ISt $K'$ eine Körpererweiterung von $K$, dann ist $E(K)$ eine
-  Teilnmenge von $E(K')$. Da die Verknüpfung algebraisch ist, ist
+  Ist $K'$ eine Körpererweiterung von $K$, dann ist $E(K)$ eine
+  Teilmenge von $E(K')$. Da die Verknüpfung algebraisch ist, ist
   $E(K)$ eine Untergruppe von $E(K')$.
 \end{bemerkung}
+
+\section{Explizite Formeln der Verknüpfung}
+
+In diesem kurzen Abschnitt fassen wir explizite Formeln für die
+Summenbildung zusammen. Sie lassen sich mit der oben beschrieben
+Vorschrift herleiten und sind nützlich für Anwendungen. Es gibt
+auch ein paar aus theoretischer Sicht interessante Beobachtungen. 
+
+Wir haben die übliche Ausgangslagen. Mit $K$ bezeichnen wir einen
+Körper und $E: Y^2 = X^3+aX+b$ ist eine Weierstrass-Gleichung mit
+$a,b\in K$. Per Definition erfüllt die Diskriminante $\Delta_E \not=
+0$, wobei 
+$\Delta_E=-2^4(4a^3+27b^2)\not=0$.
+
+Seien $P_1 = (x_1,y_1)$ und $P_2 = (x_2,y_2)$ zwei Punkte in $E(K)$.
+Wir schreiben $Q = P_1+P_2$. 
+
+\bigskip
+\textbf{Angenommen $x_1\not=x_2$.} Dann sind wir in Unterfall 1a, also
+$Q\not=0$ und somit $Q = (x,y)$ mit $x,y\in K$. Hier gilt
+\begin{alignat*}1
+  x &= \frac{-x_1^3 + x_1^2x_2 + x_1x_2^2 + y_1^2 - 2y_1y_2 -x_2^3 +
+    y_2^2}{(x_1-x_2)^2}, \\
+  y &= \frac{-x_1^3 y_1 + 2x_1^3y_2 - 3x_1^2 x_2 y_2 + 3x_1y_1x_2^2 +
+    y_1^3 - 3y_1^2y_2
+    + -2x_2^3y_1 + 3y_1 y_2^2 + x_2^3y_2 - y_2^3}{(x_1-x_2)^3}.
+\end{alignat*}
+
+In diesem Fall hängen die Formeln für die Summenbildung  \emph{nicht}
+von den Parameter $a$ und $b$ der Weierstrass-Gleichung $E$ ab.  
+
+\bigskip
+\textbf{Angenommen $P_1=P_2$ und $y_1\not=0$.} Wir sind in Unterfall
+2a. Es geht darum, den Punkt $P_1$ zu verdoppeln. Auf hier gilt wieder
+$Q=P_1+P_2\not=0$ und damit $Q=(x,y)$ mit $x,y\in K$.
+Die Tangentenkonstruktion ergibt 
+\begin{alignat*}1
+  x &= \frac{9x_1^4+6ax_1^2-8x_1y_1^2+a^2}{4y_1^2} = \frac{x_1^4 - 2ax_1^2 - 8bx_1 + a^2
+  }{4(x_1^3+ax_1+b)},\\
+  y &=
+  \frac{-27x_1^6-27ax_1^4+36x_1^3y_1^2-9a^2x_1^2+12ax_1y_1^2-8y_1^4-a^3}{8y_1^3}\\
+  & =\frac{x_1^6+ 5ax_1^4 + 20bx_1^3- 5a^2x_1^2 -4abx_1 -a^3 -8b^2 }{8y_1^3}
+\end{alignat*}
+dabei wurde jeweils in der zweiten Gleichung  $y_1^2$ durch
+$x_1^3+ax_1+b$ ersetzt.
+Diese Formeln nennt man auch
+\emph{Verdoppelungsformeln}\index{Verdoppelungsformel}, da sie den
+Punkt $2P$ in Funktion von $P$ beschreibt.
+
+
+Hier tauchen die Parameter $a$ und $b$ nun auf. Ein interessanter
+Aspekt der Verdoppelungsformel ist die Tatsache, dass der Ausdruck für
+$x$ nur von der ersten Koordinate $x_1$ von $P$ abhängt. In vielen
+Anwendungen ``rechnet'' man ausschliesslich mit der ersten Koordinate,
+um den Aufwand zu minimieren. Man verliert dabei die Information der
+zweiten Koordinate. Für jede Wahl von $x$ sind die möglichen $y$ mit 
+$y^2 = x^3+ax+b$ bis auf das Vorzeichen eindeutig bestimmt. Grob
+gesagt ``enthält'' die Verdoppelungsformel der ersten Koordinate die
+gesamte Information der Elliptischen Kurve selber.
+
+\begin{aufgabe}
+  Überprüfen sie die zwei Formeln anhand der Konstruktion in Unterfall
+  1a und 1b. 
+\end{aufgabe}
+
+% Sei $P\in E(K)$ nun ein beliebiger Punkt und $a\ge 0$ eine ganze Zahl.
+% Wir können $a$ zur Basis $2$ als Summe $a=\sum_{i} a_i 2^i$ schreiben,
+% dabei gilt $a_i\in \{0,1\}$.  
 
 \section{Die Projektive Ebene}
 \label{sec:projektiv}
@@ -539,7 +633,7 @@ auf.
   In diesem Fall schreiben wir $(x,y,z)\sim (x',y',z')$. Dabei
   definiert $\sim$ eine Äquivalenzrelation auf $K^3\ssm\{0\}$.
 
-  Die $K$-Punkte projektive Ebene sind die Äquivalenzklassen dieser
+  Die $K$-Punkte der projektive Ebene sind die Äquivalenzklassen dieser
   Äquivalenzrelation, d.h. 
   \begin{equation*}
     \IP^2(K) = (K^3\ssm\{0\})/\!\sim.
@@ -652,8 +746,8 @@ $P=Q,[0:1:0]$ auf einer projektiven Gerade in $\IP^2(K)$, welche $E$
 
 \section{Die Struktur der Gruppe $E(\IQ)$}
 
-In diesem Abschnitt beschäftigen wir uns mit der Gruppentheoretischen
-Struktur von $E(\IQ)$, wobei $E$ durch eine Weierstrass-Gleichung mit
+In diesem Abschnitt beschäftigen wir uns mit der 
+Struktur von $E(\IQ)$ als Gruppe, wobei $E$ durch eine Weierstrass-Gleichung mit
 rationalen Koeffizienten beschrieben wird. 
 
 
@@ -673,6 +767,7 @@ rationalen Koeffizienten beschrieben wird.
 \end{beispiel}
 
 \begin{beispiel}
+  \label{bsp:multiplesofP}
   Sei $E$ durch $Y^2 = X^3-5^2X$ definiert und $P = (-4,6) \in
   E(\IQ)$.
   Wir berechnen
@@ -681,19 +776,19 @@ rationalen Koeffizienten beschrieben wird.
     3P=P+P +P &= \left(\frac{-2439844}{5094049}, \frac{-39601568754}{11497268593} \right),\\
     4P= P+P +P+P &= \left( \frac{11183412793921}{2234116132416}, -\frac{1791076534232245919}{3339324446657665536}\right).
   \end{alignat*}
-  Die Vielfache $kP$ von $P$ haben weiterhin rationale Koeffizienten,
+  Die Vielfache $k\cdot P$ von $P$ haben weiterhin rationale Koeffizienten,
   das ist keine Überraschung angesichts der Konstruktion des
-  Gruppengesetzes. Gleichzeitig sehen wir, dass $kP$ für $k>1$ nicht
+  Gruppengesetzes. Gleichzeitig sehen wir, dass $k\cdot P$ für $k>1$ nicht
   notwendigerweise ganze Koordinaten besitzt, falls der Ausgangspunkt $P$
   es tut.
 
-  Nun stellt sich die natürliche Frage. Ist $\{ kP : k\ge 1\}$ eine
+  Nun stellt sich die natürliche Frage. Ist $\{ k\cdot P : k\ge 1\}$ eine
   endliche oder unendliche Menge? Die Berechnung ob legt nahe, dass
-  $kP$ für wachsendes $k$ zunehmend ``kompliziert wird''.
+  $k\cdot P$ für wachsendes $k$ zunehmend ``kompliziert wird''.
   Aus dem folgenden Satz von Lutz--Nagell folgt, dass $2P$ unendliche
   Ordnung hat. Das gleiche muss für $P$ folgen.
 
-  Inbesondere ist $E(\IQ)$ eine unendliche Menge. 
+  Insbesondere ist $E(\IQ)$ eine unendliche Menge. 
 \end{beispiel}
 
 \begin{lemma}
@@ -814,8 +909,9 @@ $Y^2 + XY + Y = X^3 - X^2 -
 \end{frage}
 
 Auch diese Frage zum Rang ist offen. Es gibt eine Heuristik von Park,
-Poonen, Voight, und Mathcett Wood, welche nahelegt, dass der Rang
+Poonen, Voight, und Matchett Wood, welche nahelegt, dass der Rang
 gegen oben beschränkt ist.
+
 
 
 
