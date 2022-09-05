@@ -24,9 +24,9 @@
     beweisen, dürfen wir $\lambda > 0$ annehmen. Nach Voraussetzung
     ist $n=ab/2$ mit $a^2+b^2=c^2$. Also ${a'}^2+{b'}^2={c'}^2$, wobei
     $a'=\lambda a, b'=\lambda b, c'=\lambda c$ wiederum rational.
-    Die Fläche des entsprechenden rechtwinkligen Dreiecks ist die
-    Zahl $a'b'/2
-    = \lambda^2 ab/2 = \lambda^2 n$ kongruent, falls sie ganz ist.
+    Die Fläche des entsprechenden rechtwinkligen Dreiecks ist
+     $a'b'/2
+    = \lambda^2 ab/2 = \lambda^2 n$. Diese Zahl ist kongruent, falls sie ganz ist.
   \item[(iii)]
     Aus (i) und (ii) folgt, dass es unendlich viele kongruente Zahlen
     gibt, denn $\{6\lambda^2 : \lambda\in\IN\}$ besteht aus kongruente
@@ -80,7 +80,7 @@ von Pierre de Fermat bewiesen.
 Eine klassische Fragestellung ist das folgende Problem.
 
 \begin{problem}
-  Gegeben eine natürliche Zahl $n$. Ist $n$ eine kongruente Zahl oder
+  Gegeben sei eine natürliche Zahl $n$. Ist $n$ eine kongruente Zahl oder
   nicht? 
 \end{problem}
 
@@ -88,7 +88,7 @@ Es ist heute kein Algorithmus bekannt, der entscheidet, ob eine
 gegebene natürliche Zahl kongruent ist oder nicht. Daher kennen wir
 keinen systematischen Zugang zu der Frage oben.
 
-In der Definition von kongruente Zahl kommen 
+%In der Definition von kongruente Zahl kommen 
 
 \begin{lemma} \label{lem:congruentelliptic}
   Sei $n\in\IN$. 
@@ -112,11 +112,11 @@ In der Definition von kongruente Zahl kommen
   und
   \begin{alignat*}1
     x^3 -n^2 x &= n^3 \frac{b^3}{(c-a)^3} - n^3 \frac{b}{c-a}
-    = n^3 \frac{b}{c-a}\left(\frac{b^2}{(c-a)^2}-1\right)
-    = n^3 b\frac{b^2-(c-a)^2}{(c-a)^3}
+    = n^3 \frac{b}{c-a}\left(\frac{b^2}{(c-a)^2}-1\right)\\
+    &= n^3 b\frac{b^2-(c-a)^2}{(c-a)^3}
     = \frac{a^3b^4}{8}\frac{b^2-(c-a)^2}{(c-a)^3}.
   \end{alignat*}
-  Es gilt  $$
+  Weiterhin gilt  $$
   y^2 - (x^3-n^2x) = \frac{a^3b^4}{8(c-a)^3} \left(
     2a(c-a) - b^2+(c-a)^2\right) =
   \frac{a^3b^4}{8(c-a)^3} (c^2-a^2-b^2)=0,
@@ -145,14 +145,14 @@ In der Definition von kongruente Zahl kommen
 \end{proof}
 
 Für jede natürliche Zahl $n\in\IN$ definiert
-Lösungsmenge der kubischen Gleichung
+die Lösungsmenge der kubischen Gleichung
 \begin{equation}
   \label{eq:ellipticcong}
   Y^2 = X^3-n^2X  
 \end{equation}
-definiert eine Kurve in der reelle (oder komplexen) Ebene. Von besonderem Interesse sind die
-\emph{rationalen Punkte} dieser Kurve, d.h. Punkte, deren Koordinaten
-rational sind.
+eine Kurve in der reelle (oder komplexen) Ebene. Von besonderem
+Interesse sind die \emph{rationalen Punkte} dieser Kurve, d.h. Punkte,
+deren Koordinaten rational sind.
 
 Die Punkte $(0,0),(\pm n,0)$ liegen augenscheinlich auf der Kurve für
 jedes $n$. Gibt es mindestens ein weiterer rationaler Punkt, d.h. ein
@@ -161,8 +161,8 @@ Zahl.
 Weiterhin ist die Umkehrung auch wahr. 
 
 
-Die Gleichung (\ref{eq:ellipticcong}) ist ein Spezialfall der
-Weierstrass-Gleichung, welche im Allgemeinen eine elliptische Kurve
+Die Gleichung (\ref{eq:ellipticcong}) ist ein Spezialfall einer
+Weierstrass-Gleichung, welche in grösserer Allgemeinen eine elliptische Kurve
 definiert.
 
 Den Satz von Fermat, Satz~\ref{satz:fermat}, lässt sich wie folgt

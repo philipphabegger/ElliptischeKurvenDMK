@@ -9,7 +9,7 @@ Silvermans Buch~\cite{Silverman:AEC} zu finden.
 
 \begin{definition}
   Ein \emph{Gitter in $\IC$}\index{Gitter in $\IC$}, ist eine
-  Teilmenge
+  Teilmenge der Form
   $$\Omega = \{\lambda_1 \omega_1 + \lambda_2 \omega_2 :
   \lambda_1,\lambda_2\in\IZ\}$$
   wobei $\omega_1,\omega_2\in\IC$ nicht auf einer Gerade
@@ -34,29 +34,30 @@ $\omega_1 = \lambda\omega_2$.
   dabei bezeichnet $\overline{\cdot}$ komplexe Konjugation. 
 \end{aufgabe}
 
-Ein Gitter $\Omega\subset\IC$ ist abgeschlossen unter der Addition auf
+Ein Gitter in $\IC$ ist abgeschlossen unter der Addition auf
 $\IC$ und unter Multiplikation mit $-1$. Es ist eine Untergruppe der
 additive Gruppe des Körpers $\IC$.
 
-Das Paar $(\omega_1,\omega_2)$ nennt man auch Basis des Gitters
-$\Omega$. Die Notation ist $\Omega = \omega_1\IZ +\omega_2\IZ$.
-Die Basis ist \underline{nicht} eindeutig durch das Gitter festgelegt.
+Das Paar $(\omega_1,\omega_2)$ nennt man auch Basis von
+$\Omega$. Die Basis ist \underline{nie}  eindeutig durch das Gitter festgelegt.
+
+Die folgende Notation ist naheliegende: $\Omega = \omega_1\IZ +\omega_2\IZ$.
 
 
 \begin{beispiel}
-  Das Gitter mit Basis $(1,e^{2\pi
+  Das Gitter in $\IC$ mit Basis $(1,e^{2\pi
     \sqrt{-1}/6})$
   ist in Abbildung
   \ref{fig:lattice} dargestellt. 
   \begin{figure}
     \centering    
-    \caption{Das Gitter $\IZ+\omega\IZ$ mit $\omega = e^{2\pi\sqrt{-1}/6}$}
+    \caption{Das Gitter $\IZ+\omega\IZ$ in $\IC$ mit $\omega = e^{2\pi\sqrt{-1}/6}$}
     \label{fig:lattice}
     \includegraphics[width=0.3\textwidth]{./plots/lattice.png}
   \end{figure}
 \end{beispiel}
 
-Gegeben sei ein Gitter $\Omega$, wir können dazu eine Funktion
+Gegeben sei ein Gitter $\Omega$ in $\IC$, wir können dazu eine Funktion
 konstruieren. Für $z\in \IC\ssm\Omega$ definieren wir
 \begin{equation}
   \label{def:wp}
@@ -83,11 +84,11 @@ Ohne Beweis halten wir die folgenden Fakten fest.
 Die Abbildung $z\mapsto \wp_\Omega(z)$ ist wohldefiniert und komplex
 differenzierbar auf $\IC\ssm\Omega$. Sie ist eine sogenannte meromorphe Funktion
 mit einer doppelten Polstelle an jedem Punkt auf $\Omega$. 
-Man nennt $\wp_\Omega$ die \emph{Weierstrass-$\wp$
+Man nennt $\wp_\Omega$ die zu $\Omega$ gehörige \emph{Weierstrass-$\wp$
   Funktion}\index{Weierstrass-$\wp$ Funktion}.
 
 \begin{lemma}
-  Sei $\Omega \subset\IC$ eine Gitter und $\wp_\Omega$ die Funktion
+  Sei $\Omega$ eine Gitter in $\IC$ und $\wp_\Omega$ die Funktion
   oben. Für alle $z\in\IC\ssm\Omega$ erfüllt die Ableitung
   \begin{equation}
     \label{eq:wpderiv}
@@ -102,7 +103,7 @@ Man nennt $\wp_\Omega$ die \emph{Weierstrass-$\wp$
   summandenweise Ableitung, da die Reihe absolut konvergiert. Es gilt
   $\wp'_\Omega(z+\omega) = \wp'_\Omega(z)$ wie im zweiten Teil der
   Aussage, da die Summe (\ref{eq:wpderiv}) invariant unter Translation
-  von $z$ um ein Gitterpunkt ist.
+  von $z$ wieder in $\Omega$ list. 
   Es folgt damit
   $$
   \wp_\Omega(z+\omega) = \wp_\Omega(z) + c(\omega)
@@ -122,7 +123,7 @@ Man nennt $\wp_\Omega$ die \emph{Weierstrass-$\wp$
 \end{bemerkung}
 
 Ohne Beweis erwähnen wir, dass $\wp_\Omega$ eine wichtige
-Differentialgleichung erfüllt. Genauer, es gibt $g_2,g_3\in\IC$, so
+Differentialgleichung erfüllt. Genauer, es gibt $g_2=g_2(\Omega),g_3=g_3(\Omega)\in\IC$, so
 dass
 \begin{equation}
   \label{eq:discg2g3}
@@ -190,12 +191,36 @@ topologischer Sicht sind $\IC/\Omega$ und $E(\IC)$ ununterscheidbar.
   Topologisch gesehen sehen alle elliptischen Kurven über $\IC$ gleich
   aus. Aber die elliptische Kurve selber trägt zusätzliche Struktur,
   da sie schlussendlich von einer Weierstrass-Gleichung kommt. Diese
-  Struktur ist für die Topologie ``unsichtbar'', aber nicht für die
-  komplexe Geometrie. 
+  Struktur ist feiner als die Topologie.
+\end{bemerkung}
+
+\begin{bemerkung}
+  Sei $\Omega$ ein Gitter in $\IC$ mit Basis $(\omega_1,\omega_2)$ Die
+  Halbperioden $\omega_1/2,\omega_2/2,(\omega_1+\omega_2)/2$
+  repräsentieren Elemente der Ordnung $2$ in $\IC/\Omega$.
+  Wie für die übliche Weierstrass-Gleichung, ohne den Faktor $4$, kann
+  man zeigen, dass die Ordinate eines Punktes der Ordnung $2$
+  verschwindet.
+  Folglich gilt
+  \begin{equation*}
+    \wp'_\Omega\left(\frac{\omega_1}{2}\right)=
+    \wp'_\Omega\left(\frac{\omega_2}{2}\right)=
+    \wp'_\Omega\left(\frac{\omega_1+\omega_2}{2}\right)=0. 
+  \end{equation*}
+  Es folgt, dass
+  \begin{equation*}
+    \wp_\Omega(z) \text{ eine Nullstelle von }
+    4X^3 -g_2(\Omega) X - g_3(\Omega)  \text{ ist für alle }
+    z\in \left\{\frac{\omega_1}{2},
+      \frac{\omega_2}{2},
+      \frac{\omega_1+\omega_2}{2}\right\}.
+  \end{equation*}
+  Also kann man kubische Gleichungen mit der Hilfe von der
+  Weierstrass-$\wp$ Funktion lösen.
 \end{bemerkung}
 
 Eine modifizierte Weierstrass-Gleichung (\ref{eq:modweierstrass}) legt
-ein Gitter $\Omega\subset\IC$ fest, für welches
+ein Gitter $\Omega$ in $\IC$ fest, für welches
 (\ref{eq:weierstrassdgl}) gilt.  Die ``Perioden'' in $\Omega$ lassen
 sich durch  Integrale
 \begin{equation*}

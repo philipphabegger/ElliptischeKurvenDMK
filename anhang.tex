@@ -7,7 +7,8 @@ Beispielen veranschaulicht werden.
 Wir beginnen mit einer Weierstrass-Gleichung $E : Y^2=X^3+aX+b$ mit
 $a,b$ in einem beliebigen Körper $K$. Wie um (\ref{eq:amultP}) beschrieben,
 können wir Punkt $P\in E(K)$ mit ganzen Zahlen multiplizieren, z.B.
-$2P = P+P$ und $3P = P+P+P$ etc. Dies ist  in jeder Gruppe möglich.
+$2\cdot P = P+P$ und $3\cdot P = P+P+P$ etc. Dies ist  in jeder Gruppe möglich,
+stellt also keine Besonderheit von elliptischen Kurven dar. 
 
 \begin{beispiel}
   Wir betrachten die elliptische Kurve die durch  $E: Y^2 = X^3+X$
@@ -44,15 +45,16 @@ $2P = P+P$ und $3P = P+P+P$ etc. Dies ist  in jeder Gruppe möglich.
     I(P+Q) = I(P)+I(Q) \quad\text{für alle}\quad P,Q\in E(\IC). 
   \end{equation*}
 
-  Schliesslich kann man weiter und für $\alpha,\beta\in\IZ$ eine
-  weiter Selbstabbildung von $E(\IC)$ gemäss
+  Schliesslich kann man  für alle $\alpha,\beta\in\IZ$ eine
+  weitere Selbstabbildung $\alpha + \beta I$ von $E(\IC)$ gemäss
   \begin{equation*}
     (\alpha + I \beta)(P) = (\alpha \cdot P) + (\beta \cdot I(P))
   \end{equation*}
   definieren. 
 
   Wie identifizieren die Menge $\{\alpha + I\beta :
-  \alpha,\beta\in\IZ\}$ der eben definierten Selbstabbildung mit den
+  \alpha,\beta\in\IZ\}$ der eben definierten Selbstabbildung mit dem
+  Ring der
   Gaussschen Zahlen
   \begin{equation*}
     \IZ[\sqrt{-1}] = \{\alpha + \sqrt{-1}\beta : \alpha,\beta\in\IZ\}.
@@ -73,6 +75,11 @@ $2P = P+P$ und $3P = P+P+P$ etc. Dies ist  in jeder Gruppe möglich.
 \end{beispiel}
 
 \begin{aufgabe}
+  Zeigen Sie, dass der Ring der Gaussschen Zahlen $\IZ[\sqrt{-1}]$
+  unter Addition und Multiplikation in  $\IC$ abgeschlossen ist. 
+\end{aufgabe}
+
+\begin{aufgabe}
   Überprüfen Sie mit der Definition, dass in der Notation des
   Beispiels oben $I(P+Q) = I(P)+I(Q)$ für alle $P,Q\in E(\IC)$ gilt.
 \end{aufgabe}
@@ -87,7 +94,7 @@ z.B. auch
 \begin{equation*}
   \left\{\alpha +\beta \frac{1+\sqrt{-163}}{2} : \alpha,\beta\in\IZ\right\}
 \end{equation*}
-
+auf. 
 Die Theorie der ``komplexen Multiplikation'' von elliptischen Kurven und deren
 Verallgemeinerung begann im 19ten Jahrhundert und spielt auch noch
 heute in der Grundlagenforschung eine zentrale Rolle~\cite{quanta:ao}.

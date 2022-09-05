@@ -2,19 +2,17 @@
 \label{kap:ek}
 
 In diesem Abschnitt werden elliptische Kurven ad hoc eingeführt.
-Teil des Datums einer elliptischen Kurve ist ein Grundkörper $K$. Dies
+Teil des Datums einer elliptischen Kurve ist der Grundkörper $K$. Dies
 ist a priori ein beliebiger Körper. Aber für uns sind die wichtigsten
 Wahlen von Grundkörper die rationalen Zahlen $\IQ$, die reellen Zahlen
 $\IR$ und die komplexen Zahlen $\IC$. Für Anwendungen in der
 Kryptographie spielen  die endlichen Körper eine zentrale Rolle.
 
-
 Es sei angemerkt, dass die Theorie elliptische Kurven im
-arithmetischen Fall, d.h. für den  $K=\IQ$ und verwandte Körper, ihre
+arithmetischen Fall, d.h. für den $K=\IQ$ und verwandte Körper, ihre
 volle Tiefe entfaltet. Falls der Grundkörper, so wie $\IC$,
-algebraisch abgeschlossen ist, verschwinden die arithmetischen
+algebraisch abgeschlossen ist, verschwinden viele arithmetische
 Aspekte.
-
 
 \section{Definition der Elliptischen Kurve}
 
@@ -37,7 +35,7 @@ Aspekte.
   Die Grösse $\Delta_E$, ein Element aus $K$, heisst
   \emph{Diskriminante}\index{Diskriminante einer Weierstrass-Gleichung}
   der Weierstrass-Gleichung $E$. Zur Weierstrass-Gleichung $E$ gehört
-  das Weierstrass-Polynom\footnote{Diese Bezeichnung ist nicht
+  das \emph{Weierstrass-Polynom}\index{Weierstass-Polynom}\footnote{Diese Bezeichnung ist nicht
     Standard.} $Y^2- (X^3+aX+b)$.
 \end{definition}
 
@@ -46,7 +44,7 @@ Aspekte.
   \item [(i)] In (\ref{eq:ellipticcong}) hatten wir die Gleichung $Y^2 = X^3-n^2X$
     für $n\in\IN$ betrachtet. Es handelt sich um eine
     Weierstrass-Gleichung $E_n$, für $K=\IQ$ (oder jeden Körper, der $\IQ$
-    enthält) mit $\Delta_{E_n} = -2^4 3^3 n^4$.
+    enthält) ist $\Delta_{E_n} = -2^4 3^3 n^4 \not=0$.
   \item[(ii)] Die Gleichung
     \begin{equation*}
       Y^2 = X^3,
@@ -59,15 +57,16 @@ Aspekte.
 \begin{bemerkung}
   Sei $K$ ein Körper der Charakteristik $2$, z.B. $K=\IF_2$, und
   $a,b\in K$. Dann ist $Y^2 = X^3+aX+b$ keine Weierstrass-Gleichung,
-  da (\ref{eq:disccondition}) nicht erfüllt ist. In $K$ gilt $2=0$.
+  da (\ref{eq:disccondition}) nicht erfüllt ist. In $K$ gilt $1+1=0$.
 
-  Das ist  unbefriedigend, da für Anwendung in der Kryptographie
-  endliche Körper 
-  der Charakteristik $2$ wichtig sind. Um Charakteristik $2$ (und auch
-  $3$) abzudecken, muss man die Definition von Weierstrass-Gleichung
-  verallgemeinern. Wir werden dies hier nicht tun, da es etwas
-  technisch ist. Kurzum reicht es mit den sogenannten langen
-  Weierstrass-Gleichungen vom Typ
+  Das ist etwas unbefriedigend, da für Anwendung in der Kryptographie
+  endliche Körper der Charakteristik $2$ wichtig sind. Weiterhin ist es
+  auch theoretischer Sicht wichtig, einen sinnvollen Begriff von
+  elliptischen Kurven über alle Körper
+  zu haben. Um Charakteristik $2$ (und auch $3$) abzudecken, muss man
+  die Definition von Weierstrass-Gleichung verallgemeinern. Wir werden
+  dies hier nicht tun, da es etwas technisch ist. Kurzum reicht es mit
+  den sogenannten langen Weierstrass-Gleichungen vom Typ
   \begin{equation*}
     Y^2 + a_1 XY + a_3 Y = X^3+a_2 X^2 + a_4 X + a_6
   \end{equation*}
@@ -122,14 +121,14 @@ definiert, es ist kein Grenzwertbegriff notwendig.
 
   Nun gilt
   \begin{equation*}
-    \underbrace{(X^3+aX+b)}_{=F}(288aX-432b) +
-    \underbrace{(-3X^2-a)}_{= \partial F/\partial X}(96aX^2 - 144bX + 64a^2)
-    = -2^4(4a^3+27b^2) \not=0
+    \underbrace{(X^3+aX+b)}_{=-F(X,0)}(288aX-432b) +
+    \underbrace{(-3X^2-a)}_{= -\partial F/\partial X}(96aX^2 - 144bX + 64a^2)
+    = -2^4(4a^3+27b^2) =\Delta_E\not= 0
   \end{equation*}
   nach Voraussetzung.
   Wir substituieren $X$ durch $x$ und finden 
   $\frac{\partial F}{\partial
-    X}(x,0)\not=0$ da $F(x,0)$.  
+    X}(x,0)\not=0$ da $F(x,0)=0$.  
 \end{proof}
 
 \begin{bemerkung}
@@ -142,7 +141,7 @@ definiert, es ist kein Grenzwertbegriff notwendig.
   \beta = \frac{\partial F}{\partial X}(x,y).$$
   Dann ist $(\alpha,\beta)$ nicht der Nullvektor.
 
-  Aus dem Satz von der impliziten Funktion folgt, wir die
+  Aus dem Satz von der impliziten Funktion folgt, dass wir die
   Nullstellenmenge von $F$ in $\IR^2$ in der Nähe von $(x,y)$ durch
   den Graph einer glatten Funktion (nach einem möglichen Koordinatentausch)
   ausdrücken können. 
@@ -236,15 +235,33 @@ sich alles abspielt (sofern nicht anders vermerkt).
   aus vier Elementen besteht. 
 \end{beispiel}
 
+
+\begin{beispiel} Sei $E: Y^2-(X^3+aX+b)$ eine Weierstrass-Gleichung
+  mit $a,b$ Elemente eines Körpers $K$.
+  \begin{enumerate}
+  \item [(i)]  Für $K=\IR$ und für  
+    alle hinreichend grosse 
+  $x\in\IR$ gibt es $y\in\IR$ mit $y^2 = x^3+ax+b$. Folglich ist $E(\IR)$ stets
+  überabzählbar unendlich.  
+  \item[(ii)] Für $K=\IC$ und für alle $x\in\IC$ gibt es $y\in\IC$ mit
+    $y^2 = x^3+ax+b$. Dabei verwenden wir, dass jede komplexe Zahl
+    eine komplexe Quadratwurzel besitzt (oder dass $\IC$ algebraisch
+    abgeschlossen ist). Also ist $E(\IC)$
+    überabzählbar unendlich.  
+  \end{enumerate}
+\end{beispiel}
+
 Wir werden zeigen, dass wir $E(K)$ mit der Struktur einer abelschen
-Gruppe verstehen können.
-Dazu müssen wir eine Verknüpfung $+\colon E(K)\times
-E(K)\rightarrow E(K)$, eine Inversionsabbildung
-$-\colon E(K)\rightarrow E(K)$, sowie ein neutrales Element in $E(K)$
-produzieren.
-
-
-
+Gruppe verstehen können. Dazu müssen wir
+\begin{itemize}
+\item eine Verknüpfung $E(K)\times E(K)\rightarrow E(K)$,
+\item eine Inversionsabbildung $E(K)\rightarrow E(K)$,
+\item sowie ein neutrales Element in $E(K)$
+  definieren.
+\end{itemize}
+Danach muss man überprüfen, dass alle Bedingungen der Definition einer abelschen Gruppe
+erfüllt sind.
+  
 \subsection{Die Verknüpfung}
 \label{sec:verknuepfung}
 
@@ -255,17 +272,18 @@ In einem ersten Schritt werden wir eine Verknüpfung
   + \colon E(K)\times E(K) \rightarrow E(K)
 \end{equation*}
 definieren. Es ist üblich, die Verknüpfung mit ``$+$'' zu bezeichnen.
-Später werden wir feststellen, dass die so konstruierte Gruppe eine
-abelsche Gruppe ist. 
+% Später werden wir feststellen, dass die so konstruierte Gruppe eine
+% abelsche Gruppe ist. 
 
-Seien $P$ und $Q$ Elemente von $E(K)$. Es folgt eine Aufspaltung in
-verschiedene Fälle. Wir werden bereits in der Konstruktion
-überprüfen, dass die Verknüpfung $+$ die Bedingung
+Seien $P$ und $Q$ Elemente von $E(K)$. Wir werden bereits in der
+Konstruktion überprüfen, dass die Verknüpfung $+$ die Bedingung
 $$
-P+Q=Q+P\quad\text{für alle}\quad P,Q\in E(K) 
+P+Q=Q+P\quad\text{für alle}\quad P,Q\in E(K)
 $$
 erfüllt. Hieraus werden wir folgern, dass die Gruppe $E(K)$ abelsch
-ist.  
+ist.
+
+Es folgt eine Aufspaltung in verschiedene Fälle.
 
 \medskip
 \textbf{Fall 1: Die Menge $\{P,Q,\cO\}$ hat drei Elemente.} In diesem
@@ -277,14 +295,14 @@ Wir unterscheiden zwei Unterfälle.
 
 \textbf{Unterfall 1a. Es gilt $x_1\not=x_2$.} In diesem Fall hat die
 Gerade $G$ (endliche) Steigung $m = \frac{y_2-y_1}{x_2-x_1}\in K$. In
-anderen Worten, sie hat die Gestalt
+anderen Worten, sie lässt sich durch die Abszisse parametrisieren
 \begin{equation*}
   G = \{(x,mx+q) : x\in K \}
 \end{equation*}
-mit $q=y_1-m x_1$. Vgl. Abbildung \ref{fig:unterfall1a} darin ist $G$
+wobei $q=y_1-m x_1$. Vgl. Abbildung \ref{fig:unterfall1a} darin ist $G$
 gestrichelt.
 
-\begin{figure}
+\begin{figure}[h]
   \centering    
   \caption{$E: Y^2 = X^3-5^2 X,P = (-4,6),Q = (\frac{1681}{144},-\frac{62279}{1728})$}
   \label{fig:unterfall1a}
@@ -373,11 +391,10 @@ Abbildung~\ref{fig:unterfall2a}.
   \includegraphics[width=0.3\textwidth]{./plots/unterfall2a.png}
 \end{figure}
 
-Für einen allgemeinen Körper können wir zwar nicht mit solchen
-Grenzwertbegriffe argumentieren, aber wir haben einen Ersatz für die
+Für einen allgemeinen Körper können wir zwar nicht mit
+Grenzwertbegriffen argumentieren, aber wir haben einen Ersatz für die
 Tangente in Bemerkung~\ref{bem:tangente} und Definition
-\ref{def:tangentensteigung}
-gefunden.
+\ref{def:tangentensteigung} gefunden.
 
 
 Für $y\not=0$ dürfen wir  Definition \ref{def:tangentensteigung}
@@ -388,7 +405,7 @@ Das Polynom
 $$
 A = (mX+a)^2 - (X^3+aX+b) \in K[X]
 $$
-hat nur eine Nullstelle der Ordnung $\ge 2$ in $x$. Dies lässt sich
+hat  eine Nullstelle der Ordnung $\ge 2$ in $x$. Dies lässt sich
 rein formal mit Hilfe der Definition von $m$ überprüfen.
 Also gilt $A = -(X-x)^2(X-x')$ für ein $x'\in K$. Dabei gilt
 \begin{equation*}
@@ -442,14 +459,14 @@ Trivialerweise gilt $P+Q=Q+P$.
 
 Sei $P\in E(K)$. Hier gibt es nur zwei Fälle.
 
-{\textbf Fall 1. Es gilt $P\not=\cO$.} In diesem Fall gilt $P=(x,y)$.
+\textbf{Fall 1. Es gilt $P\not=\cO$.} In diesem Fall ist $P=(x,y)$.
 Wegen $y^2 = x^3+ax+b$ ist auch $(x,-y)$ eine Lösung der Weierstrass-Gleichung.
 Wir  definieren
 $$
 -P = (x,-y)\in E(K)\ssm\{\c0\}.
 $$
 
-{\textbf Fall 2. Es gilt $P=\cO$.} 
+\textbf{Fall 2. Es gilt $P=\cO$.} 
 Wir  definieren
 $$
 -P = \cO \in E(K).
@@ -463,16 +480,19 @@ Element designieren.
 
 \begin{satz}
   Sei $E$ eine Weierstrass-Gleichung mit Koeffizienten in einen Körper
-  $K$. Sei $\cdot$ die Verknüpfung aus
+  $K$. Sei $+$ die Verknüpfung auf $E(K)$ aus
   Abschnitt~\ref{sec:verknuepfung}.
-  Dann ist $(E(K),+,\cO)$ eine abelsche Gruppe. 
+  Das Tripel $(E(K),\cO,+)$ ist eine abelsche Gruppe. 
 \end{satz}
 
 Die Abbildung $+\colon E(K)\times E(K) \rightarrow E(K)$ ist
-wohldefiniert. Weiterhin überprüfen wir mit der Hilfe von den  Unterfällen
+wohldefiniert. Seien $P,Q\in E(K)$ beliebig.
+Wir haben bereits überprüft, dass $P+Q=Q+P$. Also ist
+$(E(K),\cO,+)$  eine abelsche Gruppe, sofern es eine Gruppe ist. 
+Weiterhin überprüfen wir mit der Hilfe von den  Unterfällen
 1b, 2b und Fall 3 der Konstruktion, dass
 $$  (-P)+P = \cO$$
-für alle $P\in E(K)$.
+für alle $P\in E(K)$ gilt.
 
 Weiterhin ist $\cO + P = P $ für alle $P\in \cO$, dies folgt aus den
 Unterfällen 2c, 2d und Fall 3 in der Konstruktion. 
@@ -495,16 +515,18 @@ ein systematisches Arbeiten mit viel Aufwand verbunden.
 
 Es gibt einen weiteren Zugang zur Assoziativität über die sogenannte
  \emph{Picard-Gruppe}, einem  Objekt der algebraischen Geometrie
-welches man $E$ zuordnen kann. Die Picard-Gruppe ist aus theoretischen
+ welches man einer sog. glatten projektiven Kurve
+ zuordnen kann. Die Picard-Gruppe ist aus theoretischen
 Überlegungen \textit{a priori} eine abelsche Gruppe. Die Idee ist nun, eine
 bijektive Abbildung zwischen $E(K)$ und der Picard-Gruppe zu
 konstruieren, welche die oben dargestellte Verknüpfung mit dem
 Gruppengesetz der Picard-Gruppe in Verbindung setzt.
-
+Ein wichtiges Hilfsmittel bei diesem Ansatz ist der Satz von
+Riemann-Roch. 
 
 Wie in jeder Gruppe kann man Elemente mit ganzen Zahlen
 ``multiplizieren''. Seien $E$ und $K$ wie oben und weiterhin $P\in
-E(K)$ ein Punkt. Für eine ganze Zahl $a\ge 0$ schreiben wir
+E(K)$ ein Punkt. Für eine ganze Zahl $a\ge 1$ schreiben wir
 \begin{equation}
   \label{eq:amultP}
   a\cdot P = \underbrace{P+ P+\cdots +P}_{\text{$a$-mal}} \in E(K).
@@ -515,6 +537,10 @@ Für eine negative ganze Zahl $a<0$ definieren wir
 \begin{equation*}
   a\cdot P = (-a) \cdot P. 
 \end{equation*}
+Schliesslich definiert man
+\begin{equation*}
+  0\cdot P = \cO.
+\end{equation*}
 
 Damit ist $a\cdot P$ für alle $a\in\IZ$ definiert. Es gilt eine
 Variante der Assoziativität
@@ -522,7 +548,7 @@ Variante der Assoziativität
   \label{eq:actionofZ}
   a \cdot (b\cdot P) = (ab)\cdot P 
 \end{equation}
-für alle $a,b\in\IZ$.\footnote{Es ist zu beachten, dass hier
+für alle $a,b\in\IZ$.\footnote{Es ist zu beachten, dass hier zwei
   Verknüpfung auftauchen. Einerseits die gerade eben definierte
   Verknüpfung $\IZ\times E(K)\rightarrow E(K)$ und andererseits für
   $ab$ die
@@ -557,13 +583,13 @@ Wir schreiben $Q = P_1+P_2$.
 
 \bigskip
 \textbf{Angenommen $x_1\not=x_2$.} Dann sind wir in Unterfall 1a, also
-$Q\not=0$ und somit $Q = (x,y)$ mit $x,y\in K$. Hier gilt
+$Q\not=\cO$ und somit $Q = (x,y)$ mit $x,y\in K$. Hier gilt
 \begin{alignat*}1
   x &= \frac{-x_1^3 + x_1^2x_2 + x_1x_2^2 + y_1^2 - 2y_1y_2 -x_2^3 +
-    y_2^2}{(x_1-x_2)^2}, \\
+    y_2^2}{(x_2-x_1)^2}, \\
   y &= \frac{-x_1^3 y_1 + 2x_1^3y_2 - 3x_1^2 x_2 y_2 + 3x_1y_1x_2^2 +
     y_1^3 - 3y_1^2y_2
-    + -2x_2^3y_1 + 3y_1 y_2^2 + x_2^3y_2 - y_2^3}{(x_1-x_2)^3}.
+     -2x_2^3y_1 + 3y_1 y_2^2 + x_2^3y_2 - y_2^3}{(x_2-x_1)^3}.
 \end{alignat*}
 
 In diesem Fall hängen die Formeln für die Summenbildung  \emph{nicht}
@@ -572,23 +598,26 @@ von den Parameter $a$ und $b$ der Weierstrass-Gleichung $E$ ab.
 \bigskip
 \textbf{Angenommen $P_1=P_2$ und $y_1\not=0$.} Wir sind in Unterfall
 2a. Es geht darum, den Punkt $P_1$ zu verdoppeln. Auf hier gilt wieder
-$Q=P_1+P_2\not=0$ und damit $Q=(x,y)$ mit $x,y\in K$.
+$Q=P_1+P_2\not=\cO$ und damit $Q=(x,y)$ mit $x,y\in K$.
 Die Tangentenkonstruktion ergibt 
-\begin{alignat*}1
-  x &= \frac{9x_1^4+6ax_1^2-8x_1y_1^2+a^2}{4y_1^2} = \frac{x_1^4 - 2ax_1^2 - 8bx_1 + a^2
-  }{4(x_1^3+ax_1+b)},\\
-  y &=
-  \frac{-27x_1^6-27ax_1^4+36x_1^3y_1^2-9a^2x_1^2+12ax_1y_1^2-8y_1^4-a^3}{8y_1^3}\\
-  & =\frac{x_1^6+ 5ax_1^4 + 20bx_1^3- 5a^2x_1^2 -4abx_1 -a^3 -8b^2 }{8y_1^3}
-\end{alignat*}
+\begin{equation}
+  \label{eq:dupformula}
+  \begin{aligned}
+    x &= \frac{9x_1^4+6ax_1^2-8x_1y_1^2+a^2}{4y_1^2} = \frac{x_1^4 - 2ax_1^2 - 8bx_1 + a^2
+    }{4(x_1^3+ax_1+b)},\\
+    y &=
+    \frac{-27x_1^6-27ax_1^4+36x_1^3y_1^2-9a^2x_1^2+12ax_1y_1^2-8y_1^4-a^3}{8y_1^3}\\
+    & =\frac{x_1^6+ 5ax_1^4 + 20bx_1^3- 5a^2x_1^2 -4abx_1 -a^3 -8b^2 }{8y_1^3}
+  \end{aligned}
+\end{equation}
 dabei wurde jeweils in der zweiten Gleichung  $y_1^2$ durch
 $x_1^3+ax_1+b$ ersetzt.
 Diese Formeln nennt man auch
 \emph{Verdoppelungsformeln}\index{Verdoppelungsformel}, da sie den
-Punkt $2P$ in Funktion von $P$ beschreibt.
+Punkt $2\cdot P=P+P$ in Funktion von $P$ beschreibt.
 
 
-Hier tauchen die Parameter $a$ und $b$ nun auf. Ein interessanter
+In der Verdoppelungsformel tauchen die Parameter $a$ und $b$ nun auf. Ein interessanter
 Aspekt der Verdoppelungsformel ist die Tatsache, dass der Ausdruck für
 $x$ nur von der ersten Koordinate $x_1$ von $P$ abhängt. In vielen
 Anwendungen ``rechnet'' man ausschliesslich mit der ersten Koordinate,
@@ -610,8 +639,8 @@ gesamte Information der Elliptischen Kurve selber.
 \section{Die Projektive Ebene}
 \label{sec:projektiv}
 
-Die Hinzunahme des Punktes $\cO$ erscheint zunächst unnatürlich.
-Arbeitet man mit projektiver Geometrie, so taucht $\cO$ ganz natürlich
+Die Hinzunahme des Punktes $\cO$ erscheint zunächst künstlich.
+Arbeitet man mit projektiver Geometrie, so taucht $\cO$  natürlich
 auf.
 
 \begin{definition}
@@ -633,19 +662,22 @@ auf.
   In diesem Fall schreiben wir $(x,y,z)\sim (x',y',z')$. Dabei
   definiert $\sim$ eine Äquivalenzrelation auf $K^3\ssm\{0\}$.
 
-  Die $K$-Punkte der projektive Ebene sind die Äquivalenzklassen dieser
+  Die $K$-Punkte der projektiven Ebene sind die Äquivalenzklassen dieser
   Äquivalenzrelation, d.h. 
   \begin{equation*}
     \IP^2(K) = (K^3\ssm\{0\})/\!\sim.
   \end{equation*}
   Wir bezeichnen Punkte in $\IP^2(K)$ mit $[x:y:z]$, wobei $(x,y,z)\in
-  K^3\ssm\{0\}$. In dieser Schreibweise gilt
+  K^3\ssm\{0\}$.
+  % Das Tripel $(x,y,z)$ nennt man \emph{projective
+  %   Koordinaten}\index{Projektive Koordinaten} von $P$.
+  In dieser Schreibweise gilt
   \begin{equation*}
     [x:y:z] = [\lambda x : \lambda y : \lambda z]. 
   \end{equation*}
 
   \textbf{Achtung:} Die Koordinaten $(x,y,z)$ heissen \emph{projektive
-    Koordinaten} des Punkts $P=[x:y:z]$. Sie sind i.A.
+    Koordinaten}\index{Projektive Koordinaten} des Punkts $P=[x:y:z]$. Sie sind i.A.
   \underline{nicht} durch den Punkt $[x:y:z]$ bestimmt.
 
   Die Abbildung
@@ -679,9 +711,11 @@ Hieraus folgt, dass die folgenden Aussagen für alle $P\in \IP^2(K)$
   $P$ gilt $  F^{\mathrm{hom}}(x,y,z) = 0$.
 \end{enumerate}
 Ist eine dieser Aussagen erfüllt, so schreiben wir
-$F^{\mathrm{hom}}(P)=0$. 
-
-betrachten wir die ``Nullstellenmenge''
+$F^{\mathrm{hom}}(P)=0$. Obwohl die projektive Koordinaten von $P$
+nicht eindeutig bestimmt sind, ist der Ausdruck
+$F^{\mathrm{hom}}(P)=0$
+wohldefiniert. 
+Wir betrachten die ``Nullstellenmenge''
 \begin{equation*}
   E^{\mathrm{hom}}(K) = \{P \in \IP^2(K): F^{\mathrm{hom}}(P) = 0\}
 \end{equation*}
@@ -692,8 +726,9 @@ Koordinaten von $P$. Es gilt zwei Fälle.
 
 \textbf{Fall 1. Es gilt $z\not=0$.} In diesem Fall gilt $[x:y:z] =
 [x/z:y/z:1]$. Wir nehmen o.B.d.A. an, dass $z=1$, also $P=[x:y:1]$.
-Die Bedingung $F^{\mathrm{hom}}(P)=0$ heisst nun $F(x,y)=0$ und damit
-ist $(x,y) \in E(K)\ssm\{\cO\}$.
+Die Bedingung $F^{\mathrm{hom}}(P)=0$ ist gleichbedeutend mit
+$F(x,y)=0$. Daraus folgt
+ $(x,y) \in E(K)\ssm\{\cO\}$.
 
 \textbf{Fall 2. Es gilt $z=0$.} Die Bedingung
 $F^{\mathrm{hom}}([x:y:0])=0$ impliziert
@@ -713,9 +748,9 @@ Bijektion
 wobei $[0:1:0]$ auf $\cO$ abgebildet wird. 
 
 In dieser Anschauung wirken auch einige Fälle der Konstruktion der
-Verknüpfung natürlicher. So liegen in  Unterfall 2b die drei Punkte
+Verknüpfung natürlicher. So liegen in  Unterfall 2b die zwei Punkte
 $P=Q,[0:1:0]$ auf einer projektiven Gerade in $\IP^2(K)$, welche $E$
-``mit Vielfachheit 2'' schneidet. 
+``mit Vielfachheit 2'' im Punkt $P$ schneidet. 
 
 
 \begin{lemma}
@@ -772,9 +807,9 @@ rationalen Koeffizienten beschrieben wird.
   E(\IQ)$.
   Wir berechnen
   \begin{alignat*}1
-    2P=P+P &= \left(\frac{1681}{144}, \frac{62279}{1728}\right),\\
-    3P=P+P +P &= \left(\frac{-2439844}{5094049}, \frac{-39601568754}{11497268593} \right),\\
-    4P= P+P +P+P &= \left( \frac{11183412793921}{2234116132416}, -\frac{1791076534232245919}{3339324446657665536}\right).
+    2\cdot P=P+P &= \left(\frac{1681}{144}, \frac{62279}{1728}\right),\\
+    3\cdot P=P+P +P &= \left(\frac{-2439844}{5094049}, \frac{-39601568754}{11497268593} \right),\\
+    4\cdot P= P+P +P+P &= \left( \frac{11183412793921}{2234116132416}, -\frac{1791076534232245919}{3339324446657665536}\right).
   \end{alignat*}
   Die Vielfache $k\cdot P$ von $P$ haben weiterhin rationale Koeffizienten,
   das ist keine Überraschung angesichts der Konstruktion des
@@ -783,9 +818,11 @@ rationalen Koeffizienten beschrieben wird.
   es tut.
 
   Nun stellt sich die natürliche Frage. Ist $\{ k\cdot P : k\ge 1\}$ eine
-  endliche oder unendliche Menge? Die Berechnung ob legt nahe, dass
+  endliche oder unendliche Menge? Die Berechnung legt nahe, dass
   $k\cdot P$ für wachsendes $k$ zunehmend ``kompliziert wird''.
-  Aus dem folgenden Satz von Lutz--Nagell folgt, dass $2P$ unendliche
+  Wir werden aus dem Satz von Lutz--Nagell (siehe Satz~\ref{satz:ln} unten)
+  folgern,
+  dass $2P$ unendliche
   Ordnung hat. Das gleiche muss für $P$ folgen.
 
   Insbesondere ist $E(\IQ)$ eine unendliche Menge. 
@@ -793,22 +830,23 @@ rationalen Koeffizienten beschrieben wird.
 
 \begin{lemma}
   \label{len:noorder4}
-  Sei $n\not=0$ in $\IQ$ und $E:Y^2 = X^3-n^2X$. Sei $P\in E(\IQ)$,
+  Sei $n\not=0$ in $\IQ$ und $E_n:Y^2 = X^3-n^2X$. Sei $P\in E(\IQ)$,
   dann hat $P$ nicht Ordnung $4$. 
 \end{lemma}
 \begin{proof}
   Sei  $P =(x,y)\in E(\IQ)$. Wir dürfen annehmen, dass $P$ nicht
   Ordnung $2$ hat. Also gilt $y\not=0$ wegen Lemma~\ref{lem:2torsion}.
   Es gilt  
-  $2P=(*,y')$ mit $y'\in \IQ$.
+  $2\cdot P=(*,y')$ mit $y'\in \IQ$.
 
-  Mit Unterfall 2a berechnen wir
+  Mit Hilfe von (\ref{eq:dupformula}) berechnen wir
   \begin{alignat*}1
-    2P= P+P &=\left(*, \frac{-27x^6 + 27n^2x^4 + 36y^2x^3 -
-        9n^4x^2 - 12n^2y^2x + (-8y^4 + n^6)}{8y^3}\right)\\
+    2\cdot P= P+P % &=\left(*, \frac{-27x^6 + 27n^2x^4 + 36y^2x^3 -
+        % 9n^4x^2 - 12n^2y^2x + (-8y^4 + n^6)}{8y^3}\right)\\
     &= \left(*, \frac{x^6 - 5n^2x^4 - 5n^4x^2 + n^6}{8y^3}\right)
   \end{alignat*}
-  dabei verwendeten wir $y^2 = x^3-n^2x$.
+  dabei interessiert uns die Abszisse nicht.
+%  dabei verwendeten wir $y^2 = x^3-n^2x$.
   Wir faktorisieren
   $$
   x^6 - 5n^2x^4 - 5n^4x^2 + n^6 = (x^2+n^2)(x^2-2nx-n^2)(x^2+2nx-n^2). 
@@ -816,16 +854,11 @@ rationalen Koeffizienten beschrieben wird.
   Die Polynome $X^2\pm 2nX-n^2$ haben Diskriminante $8n^2$. Aber
   $8n^2$ ist nicht das Quadrat einer rationalen Zahl. Also hat $X^2\pm
   2nX-n^2$ keine Nullstelle in $\IQ$. Auch $X^2+n^2$ hat keine
-  Nullstelle in $\IQ$. Folglich ist
+  Nullstelle in $\IQ$ da es in $\IR$ keine Nullstelle besitzt. Folglich ist
   $x^6 - 5n^2x^4 - 5n^4x^2 + n^6\not=0$, also $y'\not=0$. Damit hat $2P$ nicht
   Ordnung $2$, vgl. Lemma~\ref{lem:2torsion}. 
 \end{proof}
 
-\begin{satz}[Lutz (1937), Nagell (1935)]
-  Sei $E:Y^2=X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in\IZ$.
-  Falls $ P =(x,y)\in E(\IQ)$ ein Element endlicher Ordnung ist, so
-  gilt $x,y\in\IZ$. 
-\end{satz}
 
 Ein zentrale Satz in der arithmetischen Theorie elliptische Kurven ist
 der Satz von Mordell.
@@ -840,6 +873,14 @@ der Satz von Mordell.
 Die Gruppe $G$ in Mordells Satz kann mit den Elementen in $E(\IQ)$
 endlicher Ordnung identifiziert werden. Der Satz von Lutz--Nagell
 ermöglicht es uns $G$ explizit zu berechnen, falls $a,b\in\IZ$.
+
+\begin{satz}[Lutz (1937), Nagell (1935)]
+  \label{satz:ln}
+  Sei $E:Y^2=X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in\IZ$.
+  Falls $ P =(x,y)\in E(\IQ)$ ein Element endlicher Ordnung ist, so
+  gilt $x,y\in\IZ$. 
+\end{satz}
+
 
 Ein tiefes Resultat von Barry Mazur legt die Gruppe $G$ bis auf ein
 paar wenige Möglichkeiten fest.
@@ -856,7 +897,6 @@ paar wenige Möglichkeiten fest.
 
 Der Exponent $r$ in Mordells Satz heisst \emph{Rang}\index{Rang von $E(\IQ)$} von
 $E(\IQ)$ oder $E$. Diese Invariante liegt tiefer und bleibt mysteriös.
-
 Die folgende Fragestellung ist 2022 ein offenes Problem.
 
 \begin{problem}
@@ -882,7 +922,7 @@ Die folgende Fragestellung ist 2022 ein offenes Problem.
 
   A priori ist $H=\{(0,0),(\pm n,0),\cO\}$ eine Untergruppe von
   $E_n(\IQ)$ die zu $(\IZ/2\IZ)^2$ isomorph ist, vgl.
-  Lemma~\ref{bsp:vierergruppe}. Die Untergruppe $H$ ist ebenfalls eine
+  Beispiel~\ref{bsp:vierergruppe}. Die Untergruppe $H$ ist ebenfalls eine
   Untergruppe von $G$ wie in Mazurs Satz. Folglich ist  $G=H$ oder $G$
   ist zu $\IZ/2\IZ\times\IZ/4\IZ$ isomorph.
   Im zweiten Fall hätte $E_n(\IQ)$ ein Element der Ordnung $4$, aber
