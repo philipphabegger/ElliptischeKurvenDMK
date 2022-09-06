@@ -55,15 +55,16 @@ Die gesamte Information $(p,E,P)$ ist an dieser Stelle rein
 öffentlich. 
 A und B müssen davon ausgehen, dass dritte Zugriff auf
 diese Information haben.
-Sie gilt sogar standardisierte Wahlen für  dieses Tripels in den Implementationen.
+Es gibt standardisierte Wahlen für  dieses Tripels in den Implementationen.
 
 \bigskip
 \textbf{Schritt 2.} In diesem Schritt wählt A per Zufall eine
 natürliche Zahl $a$, die optimalerweise teilerfremd zur Ordnung von
 $P$ ist. \emph{Die Zahl $a$ muss geheim bleiben}, nur A kennt sie. A berechnet nun den Punkt
 $$
-a\cdot P = \underbrace{P+P+P+\cdots + P}_{\text{$a$ mal}}.
+a\cdot P = \underbrace{P+P+P+\cdots + P}_{\text{$a$ mal}}
 $$
+als Element von $E(\IF_p)$. 
 
 Diese Berechnung lässt sich wie folgt effizient gestalten.
 Ist die Entwicklung von $a$ zur Basis $2$ durch $\sum_{i} a_i 2^i$ mit
@@ -73,7 +74,9 @@ a\cdot P =\sum_{i : a_i=1} 2^i \cdot P.$$
 Also lässt sich $a \cdot P$ rein aus der  Addition $E(\IF_p)\times
 E(\IF_p)\rightarrow E(\IF_p)$  und Iterationen der
 Verdoppelungsabbildung  $2\colon E(\IF_p)\rightarrow E(\IF_p)$
-bestimmen. 
+bestimmen. Die Anzahl Rechenschritte ist in der Grössenordnung $\log
+a$. Da $a$ von Grössenordnung $p$ ist, sind das $O(\log p)$
+Rechenschritte. 
 
 \bigskip
 \textbf{Schritt 3.} B macht das gleiche und wählt eine geheime natürliche Zahl
@@ -91,7 +94,9 @@ $b\cdot P$ an A. Dieser Informationsaustausch geschieht auf dem
 
 \bigskip
 \textbf{Schritt 5.} Zu diesem Zeitpunkt besitzt A die Information $a$
-und $b\cdot P$. Nun berechnet A den neuen Punkt
+und $b\cdot P$ und $B$ besitzt die Information $b$ und $a\cdot P$.
+
+Nun berechnet A den neuen Punkt
 \begin{equation*}
   a\cdot (b\cdot P) \in E(\IF_p).
 \end{equation*}
@@ -106,7 +111,7 @@ $$
 a\cdot (b\cdot P) = (ab)\cdot P = (ba) \cdot P = b\cdot (a\cdot P),$$
 diese Gleichung wurde bereits in (\ref{eq:actionofZ}) angesprochen.
 
-Das gemeinsame Geheimnis ist der Punkt $(ab)\cdot P$. Diese kann als
+Das gemeinsame Geheimnis ist der Punkt $(ab)\cdot P$. Dieses kann als
 Grundlage für die Festlegung eines Schlüssel für ein symmetrisches
 Verfahren genutzt werden.
 
@@ -117,14 +122,14 @@ gibt, den Wert $a$ (modulo $\mathrm{ord}(P)$)
 aus $a\cdot P$ zu rekonstruieren. Diese Problem nennt sich
 \emph{diskreter Logarithmus}.
 
-In der Praxis ist $\mathrm{ord}(P)$
-von der Grössenordnung $2^{256}$. Einfaches ``Absuchen'' von $a$ ist
+In der Praxis ist $\mathrm{ord}(P)$ von der Grössenordnung $p$ und
+damit in Anwendungen ca. $2^{256}$. Einfaches ``Absuchen'' von $a$ ist
 nicht praktikabel.
 
 Dennoch ist es nicht ausgeschlossen, dass es einen noch unbekannten
 und effizienten Zugang zum diskreten Logarithmus gibt. Dabei bedeutet
 ``effizient'' ein Algorithmus der mit hoher Wahrscheinlichkeit $a$
-produziert und zwar in $(\log p)^C$ Rechenschritt für eine Konstante
+produziert und zwar in $O((\log p)^C)$ Rechenschritt für eine Konstante
 $C$.
 
 Im Jahr 1994 hat Peter Shor~\cite{shor} einen ``Quantum-Algorithmus'' entwickelt,
@@ -132,6 +137,13 @@ welcher den Diffie-Hellman Schlüsselaustausch unsicher macht, sollte
 ein hinreichend mächtiger Quantencomputer zur Verfügung stehen.
 Kurzum, die zukünftige Bedeutung des Diffie-Hellman
 Schlüsselaustausches ist offen.
+
+Eine einfache Implementation des Diffie-Hellman Schlüsselaustausches ist als SageMath Skript
+auf der GitHub repository in
+\begin{center}
+  \href{https://github.com/philipphabegger/ElliptischeKurvenDMK/blob/master/sage/diffie-hellman-schluesselaustausch.ipynb}{\texttt{sage/diffie-hellman-schluesselaustausch.ipynb}}
+\end{center}
+zu finden.
 
 \section{Lenstras Verfahren}
 
@@ -172,7 +184,8 @@ einem Ring entwickeln,\footnote{Solche Objekte heissen
   \emph{elliptische Schemata} oder \emph{abelsche Schemata}}
 sondern  \textit{ad hoc} so rechnen, wie wir das in Abschnitt
 \ref{kap:ek} über einem Körper beschrieben haben. Dabei sind einige
-Vorkehrungen nötig, um Nullteiler zu berücksichtigen. Es sind aber
+Vorkehrungen nötig, um Nullteiler zu berücksichtigen. 
+Es sind aber
 gerade die Nullteiler von $\IZ/n\IZ$, welche Rückschlüsse auf die
 Primfaktoren von $n$ schliessen lassen.
 
@@ -192,7 +205,19 @@ bezeichnen zu dürfen, den $\IZ/n\IZ$ besitzt Nullteiler. Wir brauchen
 die stärkere Bedingung $\Delta_E \in (\IZ/n\IZ)^\times$, dabei
 bezeichnet $(\IZ/n\IZ)^\times$ die Elemente in $\IZ/n\IZ$ die sich
 multiplikativ invertieren lassen.\footnote{Für $n$ eine Primzahl ist $\IZ/n\IZ$
-ein Körper und die Bedingung ist mit $\Delta_E\not=0$ gleichbedeutend.}
+ein Körper und die Bedingung ist mit $\Delta_E\not=0$
+gleichbedeutend.}
+
+Die in
+Abschnitt~\ref{kap:ek} beschrieben Vorschrift definiert nur eine
+partielle Verknüpfung auf 
+\begin{equation*}
+E(\IZ/n\IZ) =   \{(x,y) \in (\IZ/n\IZ)^2:  y^2 = x^3+\overline a x +
+\overline b\}\cup\{\cO\}. 
+\end{equation*}
+% $Y^2 = X^3+\overline a X +\overline b$ in $(\IZ/n\IZ)^2$ zusammen mit
+% $\{\cO\}$. 
+
 Es gilt
 \begin{equation}
   \label{eq:ggTDeltaE}
@@ -202,7 +227,8 @@ Es gilt
 
 In der Praxis lässt sich der ggT sehr effizient mittels Teilung
 mit Rest berechnen. 
-Diese Aussage ist für unser Anliegen interessant.  Sollte $\Delta_E$
+%Diese Aussage ist für unser Anliegen interessant.
+Sollte $\Delta_E$
 \emph{keine} Einheit sein, dann haben die ``nicht reduzierte''
 Diskriminante $-2^4(4a^3+27b^2)$ und $n$ einen gemeinsamen Teiler
 $d>1$. Nun gibt es zwei Fälle:
@@ -215,7 +241,8 @@ $d>1$. Nun gibt es zwei Fälle:
   von $n$. Um ein Primfaktor von $n$ zu finden, reicht es, einen
   Primfaktor von $d$ zu finden. Da $d\le n/2$ hat sich das Problem durch
   diesen Schritt exponentiell vereinfacht. Ist $n=pq$ das Produkt verschiedener
-  Primzahlen $p$ und $q$ (wie in RSA), so gilt sogar $d=p$ oder $d=q$.
+  Primzahlen $p$ und $q$ (wie in RSA), so gilt sogar $d=p$ oder $d=q$
+  und wir sind im Ziel.
 \end{itemize}
 
 Nun beschreiben wir eine vereinfachte Version von Lentras Verfahren.
@@ -223,8 +250,10 @@ Gegeben sie $n=pq\in\IN$
 das Produkt zweier Primzahlen $p\not=q$. 
 
 \bigskip
-\textbf{Schritt 1}. Wir wählen zufällig $\overline a,\overline
-x,\overline y\in\IZ/n\IZ$, repräsentiert durch $a,x,y\in \{0,\ldots,n-1\}$. 
+\textbf{Schritt 1}. Wir wählen zufällig $a,x,y\in \{0,\ldots,n-1\}$.
+Diese repräsentieren
+$\overline a,\overline
+x,\overline y\in\IZ/n\IZ$.
 Dann definieren wir
 $$
 b = y^2 - x^3 - ax\in \IZ.
@@ -248,7 +277,7 @@ der ggT schnell berechnen lässt.
 
 Also können wir für das weitere Vorgehen annehmen, dass
 $\Delta_E\in(\IZ/n\IZ)^\times$. Damit definiert
-$E : Y^2 - (X^3+\overline a X + \overline b)$ eine elliptische Kurve
+$E : Y^2 = X^3+\overline a X + \overline b$ eine (verallgemeinerte) elliptische Kurve
 mit Koeffizienten in $\IZ/n\IZ$.
 
 \bigskip
@@ -258,17 +287,18 @@ Die in Abschnitt~\ref{kap:ek}, Abschnitt \ref{sec:verknuepfung},
 beschriebene Verknüpfung kann man
 ad hoc auf die  
 Punkte in  $E(\IZ/n\IZ)$ anzuwenden.
-Unser Ziel ist es, ein Vielfaches $k \cdot P$ zu berechnen, dabei ist
-$k\in\IN$ eine natürliche Zahl.
+Unser Ziel ist es, ein Vielfaches $B \cdot P$ zu berechnen, dabei ist
+$B=k!\in\IN$ eine natürliche Zahl. Konkret werden wir $2\cdot P,
+6\cdot P, 24\cdot P$  bis zu $B \cdot P$ ausrechnen. 
 
 Um das effizient zu gestalten, entwickeln wir $k$, wie beim
 Diffie-Hellman Schlüsselaustausch, zur Basis $2$. D.h. wir schreiben
 $k=\sum_{i} k_i 2^i$ mit
 $k_{i}\in \{0,1\}$. Wir möchten 
 $$
-\sum_{i : k_i=1} 2^i \cdot P
+\sum_{i : k_i=1} 2^i \cdot Q
 $$
-bestimmen.
+für $Q\in E(\IZ/n\IZ)$ bestimmen.
 
 Insgesamt müssen wir auf $E(\IZ/n\IZ)$   zwei Punkte addieren können.
 Da aber $\IZ/n\IZ$ kein Körper ist, darf nicht durch ein Element
@@ -282,31 +312,31 @@ $(\IZ/n\IZ)^\times$ liegt. D.h. bei jeder Teilung müssen wir
 überprüfen, dass der ggT eines Repräsentanten in $\IZ$, von $x_1-x_2$ oder $2y$,
 zu $n$ gleich $1$ ist. Ist der ggT gleich $1$, so dürfen wir teilen
 und die Berechnung durchführen.
-Ist der ggT $d$ jedoch $>1$ so sind wir wieder in einer
+Ist der ggT jedoch $>1$ so sind wir wieder in einer
 Fallunterscheidungen wie unterhalb von (\ref{eq:ggTDeltaE}).
 
-Sollte $d=n$ gelten haben wir ``Pech''. Wir müssen das Verfahren neu
+Sollte $d=n$ gelten, so haben wir ``Pech''. Wir müssen das Verfahren wieder
 bei Schritt 1 mit einer neuen Wahl von $\overline a,\overline
 x,\overline y$ starten. Es scheint schwierig, diesen unglücklichen
 Ausgang a priori auszuschliessen. Deshalb ist dieser Algorithmus
 ``probabilistisch''.
 
-Gilt jedoch $1<d<n$, so muss (da $n=pq$) $d=p$ oder $d=q$. In diesem
+Gilt jedoch $1<d<n$, so muss (da $n=pq$) $d=p$ oder $d=q$ gelten. In diesem
 Fall sind wir fertig, da ein Primfaktor gefunden wurde.
 
 \bigskip
 
-Die genaue Wahl von $k$ spielt für die Analyse des Algorithmus eine
-wichtig Rolle auf die wir hier nicht eingehen werden. Es stellt sich
-als vorteilhaft heraus, für $k$ ein Produkt von vielen ``kleinen''
-Primzahlen zu wählen.
+Die genaue Wahl von $B$ spielt für die Analyse des Algorithmus eine
+wichtig Rolle auf die wir hier nicht eingehen werden. Anstatt einer
+Fakultät, stellt sich als vorteilhaft heraus, für $B$ ein Produkt von
+vielen ``kleinen'' Primzahlen zu wählen.
 
 Eine einfache Implementation dieses Verfahrens ist als SageMath Skript
 auf der GitHub repository in
 \begin{center}
-\texttt{sage/primfaktorisierung\_lenstra.ipynb}  
+    \href{https://github.com/philipphabegger/ElliptischeKurvenDMK/blob/master/sage/primfaktorisierung_lenstra.ipynb}{\texttt{sage/primfaktorisierung\_lenstra.ipynb}}
 \end{center}
- zu finden. Hier wurde $k=10!$ festgelegt.
+zu finden. Hier wurde $B=10!$ festgelegt.
 
 
 

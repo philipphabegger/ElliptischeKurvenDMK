@@ -14,7 +14,7 @@ volle Tiefe entfaltet. Falls der Grundkörper, so wie $\IC$,
 algebraisch abgeschlossen ist, verschwinden viele arithmetische
 Aspekte.
 
-\section{Definition der Elliptischen Kurve}
+\section{Definition der elliptischen Kurve}
 
 \begin{definition}
   Sei $K$ wie oben ein Körper.
@@ -29,7 +29,7 @@ Aspekte.
     \label{eq:disccondition}
     \Delta_E = -2^4(4a^3+27b^2)\not=0
   \end{equation}
-  erfüllt. Wir bezeichnen $E$ auch als \emph{Elliptische
+  erfüllt. Wir bezeichnen $E$ auch als \emph{elliptische
     Kurve}\index{Elliptische Kurve}
   definiert über $K$.
   Die Grösse $\Delta_E$, ein Element aus $K$, heisst
@@ -100,7 +100,7 @@ definiert, es ist kein Grenzwertbegriff notwendig.
 \begin{lemma}
   \label{lem:smooth}
   Sei $F$ das Weierstrass-Polynom einer Weierstrass-Gleichung
-  (\ref{eq:weierstrass}). Sei $(x,y)\in K^2$ mit $F(x,y)\not=0$. Dann
+  (\ref{eq:weierstrass}). Sei $(x,y)\in K^2$ mit $F(x,y)=0$. Dann
   gilt
   \begin{equation*}
     \frac{\partial F}{\partial X}(x,y)\not=0 \qoq
@@ -179,7 +179,7 @@ als ``Glattheitsbedingung'' verstehen lässt.
 \begin{definition}
   \label{def:tangentensteigung}
   Sei $F$ das Weierstrass-Polynom einer Weierstrass-Gleichung. Falls
-  $(x,y)\in K$ und $y\not=0$, dann heisst
+  $(x,y)\in K$ und $F(x,y)=0$ mit  $y\not=0$, dann heisst
   \begin{equation*}
     \frac{\frac{\partial F}{\partial X}}{-\frac{\partial F}{\partial
         Y}}(x,y) = \frac{3x^2+a}{2y}
@@ -392,9 +392,10 @@ Abbildung~\ref{fig:unterfall2a}.
 \end{figure}
 
 Für einen allgemeinen Körper können wir zwar nicht mit
-Grenzwertbegriffen argumentieren, aber wir haben einen Ersatz für die
-Tangente in Bemerkung~\ref{bem:tangente} und Definition
-\ref{def:tangentensteigung} gefunden.
+Grenzwertbegriffen argumentieren, aber wir haben
+dank Bemerkung~\ref{bem:tangente} und Definition
+\ref{def:tangentensteigung} eine algebraische Version der Tangente
+gefunden.
 
 
 Für $y\not=0$ dürfen wir  Definition \ref{def:tangentensteigung}
@@ -565,6 +566,38 @@ für alle $a,b\in\IZ$.\footnote{Es ist zu beachten, dass hier zwei
   $E(K)$ eine Untergruppe von $E(K')$.
 \end{bemerkung}
 
+
+\begin{lemma}
+  \label{lem:2torsion}
+  Sei $E:Y^2 = X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in K$.
+  Sei $P=(x,y)\in E(K)\ssm\{0\}$. Dann gilt
+   $P\in E(K)$ hat Ordnung $2$ genau dann, wenn $y=0$ und $x^3+ax+b=0$.
+\end{lemma}
+\begin{proof}
+  Ist $P$ der Ordnung zwei, so gilt $P+P=\cO$.
+  Wir durchsuchen die sieben Fälle in der Konstruktion der
+  Verknüpfung. Nur Unterfall 2b ergibt $\cO$ als Summe, daher muss
+  $P=(x,0)$ sein und $x^3+ax+b=0$.
+
+  Die Umkehrung der Aussage folgt auf ähnliche Art, wiederum müssen
+  wir in Unterfall 2b sein.
+\end{proof}
+
+\begin{korollar}
+  \label{kor:congruentelliptic}
+  Sei $n\in\IN$ und $E_n : Y^2 = X^3-n^2 X$. Dann gilt
+  \begin{alignat*}1
+  n \text{ ist eine kongruente Zahl}\quad&\Leftrightarrow\quad  E_n(\IQ) \supsetneq
+  \{(0,0),(\pm n,0),\cO\} \\
+  &\Leftrightarrow \quad
+  E_n(\IQ)\text{ besitzt ein Punkt der Ordnung $\not=1,2$.}
+\end{alignat*}
+\end{korollar}
+\begin{proof}
+  Das Korollar folgt aus Lemma~\ref{lem:congruentelliptic} und
+  \ref{lem:2torsion}. 
+\end{proof}
+
 \section{Explizite Formeln der Verknüpfung}
 
 In diesem kurzen Abschnitt fassen wir explizite Formeln für die
@@ -625,7 +658,7 @@ um den Aufwand zu minimieren. Man verliert dabei die Information der
 zweiten Koordinate. Für jede Wahl von $x$ sind die möglichen $y$ mit 
 $y^2 = x^3+ax+b$ bis auf das Vorzeichen eindeutig bestimmt. Grob
 gesagt ``enthält'' die Verdoppelungsformel der ersten Koordinate die
-gesamte Information der Elliptischen Kurve selber.
+gesamte Information der elliptischen Kurve selber.
 
 \begin{aufgabe}
   Überprüfen sie die zwei Formeln anhand der Konstruktion in Unterfall
@@ -635,6 +668,8 @@ gesamte Information der Elliptischen Kurve selber.
 % Sei $P\in E(K)$ nun ein beliebiger Punkt und $a\ge 0$ eine ganze Zahl.
 % Wir können $a$ zur Basis $2$ als Summe $a=\sum_{i} a_i 2^i$ schreiben,
 % dabei gilt $a_i\in \{0,1\}$.  
+
+
 
 \section{Die Projektive Ebene}
 \label{sec:projektiv}
@@ -752,33 +787,6 @@ Verknüpfung natürlicher. So liegen in  Unterfall 2b die zwei Punkte
 $P=Q,[0:1:0]$ auf einer projektiven Gerade in $\IP^2(K)$, welche $E$
 ``mit Vielfachheit 2'' im Punkt $P$ schneidet. 
 
-
-\begin{lemma}
-  \label{lem:2torsion}
-  Sei $E:Y^2 = X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in K$.
-  Sei $P=(x,y)\in E(K)\ssm\{0\}$. Dann gilt
-   $P\in E(K)$ hat Ordnung $2$ genau dann, wenn $y=0$ und $x^3+ax+b=0$.
-\end{lemma}
-\begin{proof}
-  Ist $P$ der Ordnung zwei, so gilt $P+P=\cO$.
-  Wir durchsuchen die sieben Fälle in der Konstruktion der
-  Verknüpfung. Nur Unterfall 2b ergibt $\cO$ als Summe, daher muss
-  $P=(x,0)$ sein und $x^3+ax+b=0$.
-
-  Die Umkehrung der Aussage folgt auf ähnliche Art, wiederum müssen
-  wir in Unterfall 2b sein.
-\end{proof}
-
-\begin{korollar}
-  \label{kor:congruentelliptic}
-  Sei $n\in\IN$ und $E_n : Y^2 = X^3-n^2 X$. Dann ist
-  $n$ genau dann eine kongruente Zahl, wenn $E_n(\IQ) \supsetneq
-  \{(0,0),(\pm n,0),\cO\}$. 
-\end{korollar}
-\begin{proof}
-  Das Korollar folgt aus Lemma~\ref{lem:congruentelliptic}. 
-\end{proof}
-
 \section{Die Struktur der Gruppe $E(\IQ)$}
 
 In diesem Abschnitt beschäftigen wir uns mit der 
@@ -800,6 +808,19 @@ rationalen Koeffizienten beschrieben wird.
   Im Fall $n=1$ folgt aus Beispiel \ref{bsp:fermat}, bzw. aus dem Satz von Fermat, Satz
   \ref{satz:fermat2}, dass $E_1(\IQ) = H=  \{(0,0),(\pm 1,0),\cO\}$. 
 \end{beispiel}
+
+\begin{aufgabe}
+  Sei $E$ eine Weierstrass-Gleichung über einem Körper $K$ und
+  $H = \{P \in E(K) : 2\cdot P=\cO\}$.
+  \begin{enumerate}
+  \item [(i)]
+    Zeigen
+    Sie, dass $H$ eine Untergruppe von $E(K)$ ist. 
+  \item[(ii)] Zeigen Sie, dass $\# H \in \{1,2,4\}$.
+  \item [(iii)] Zeigen Sie, dass $H$ zur trivialen Gruppe, zu
+    $\IZ/2\IZ$ oder zu $(\IZ/2\IZ)^2$ isomorph ist. 
+  \end{enumerate}
+\end{aufgabe}
 
 \begin{beispiel}
   \label{bsp:multiplesofP}
@@ -831,13 +852,13 @@ rationalen Koeffizienten beschrieben wird.
 \begin{lemma}
   \label{len:noorder4}
   Sei $n\not=0$ in $\IQ$ und $E_n:Y^2 = X^3-n^2X$. Sei $P\in E(\IQ)$,
-  dann hat $P$ nicht Ordnung $4$. 
+  dann hat $P$ nicht Ordnung $4$ und nicht Ordnung $3$. 
 \end{lemma}
 \begin{proof}
-  Sei  $P =(x,y)\in E(\IQ)$. Wir dürfen annehmen, dass $P$ nicht
-  Ordnung $2$ hat. Also gilt $y\not=0$ wegen Lemma~\ref{lem:2torsion}.
-  Es gilt  
-  $2\cdot P=(*,y')$ mit $y'\in \IQ$.
+  Wir dürfen annehmen, dass $P$ nicht
+  Ordnung $1$ oder $2$ hat. Also gilt $P=(x,y)$ mit  $y\not=0$ wegen Lemma~\ref{lem:2torsion}.
+  Wir schreiben  
+  $2\cdot P=(x',y')$ mit $x',y'\in \IQ$.
 
   Mit Hilfe von (\ref{eq:dupformula}) berechnen wir
   \begin{alignat*}1
@@ -856,7 +877,28 @@ rationalen Koeffizienten beschrieben wird.
   2nX-n^2$ keine Nullstelle in $\IQ$. Auch $X^2+n^2$ hat keine
   Nullstelle in $\IQ$ da es in $\IR$ keine Nullstelle besitzt. Folglich ist
   $x^6 - 5n^2x^4 - 5n^4x^2 + n^6\not=0$, also $y'\not=0$. Damit hat $2P$ nicht
-  Ordnung $2$, vgl. Lemma~\ref{lem:2torsion}. 
+  Ordnung $2$, vgl. Lemma~\ref{lem:2torsion}. Also hat $P$ nicht
+  Ordnung $4$. 
+
+  Um zu zeigen, dass $P$ nicht Ordnung $3$ hat, müssen wir $2\cdot P +
+  P \not=\cO$ zeigen.
+  Sicher gilt $2\cdot P \not=P$ (da $P\not=\cO$).
+  Wegen Unterfall 1a reicht es zu zeigen, dass
+  $x\not=x'$. Wir nehmen $x=x'$ an und folgern einen Widerspruch. Es
+  muss $y\not=y'$ gelten, also $y=-y'$. Mit Hilfe der
+  Verdoppelungsformel oben erhalten wir
+  \begin{alignat*}1
+    0&=    x^6-5n^2x^4-5n^4x^2+n^6 + 8y^4 =
+    x^6-5n^2x^4-5n^4x^2+n^6 + 8(x^3-n^2 x)^2\\
+    &=9x^6 - 21n^2x^4 + 3n^4x^2 + n^6 =
+    (3x^2-n^2)(3x^4-6n^2x^2-n^4).
+  \end{alignat*}
+  Aber $3X^2-n^2$ hat keine rationalen Nullstelle
+  und $3X^2-6n^2X-n^4$ ebenfalls nicht. In beiden Fällen ist die
+  Diskriminante kein Quadrat in $\IQ$.
+    Es folgt aus der zweiten Aussage, dass
+  $3X^4-6n^2X^2-n^4$ keine rationale Nullstelle besitzt. Also haben
+  wir den gesuchten Widerspruch.
 \end{proof}
 
 
@@ -878,7 +920,8 @@ ermöglicht es uns $G$ explizit zu berechnen, falls $a,b\in\IZ$.
   \label{satz:ln}
   Sei $E:Y^2=X^3+aX+b$ eine Weierstrass-Gleichung mit $a,b\in\IZ$.
   Falls $ P =(x,y)\in E(\IQ)$ ein Element endlicher Ordnung ist, so
-  gilt $x,y\in\IZ$. 
+  gilt $x,y\in\IZ$. Weiterhin gilt entweder $y=0$ oder $y^2 \mid
+  4a^3+27b^2$. 
 \end{satz}
 
 
@@ -895,14 +938,6 @@ paar wenige Möglichkeiten fest.
   \end{alignat*}
 \end{satz}
 
-Der Exponent $r$ in Mordells Satz heisst \emph{Rang}\index{Rang von $E(\IQ)$} von
-$E(\IQ)$ oder $E$. Diese Invariante liegt tiefer und bleibt mysteriös.
-Die folgende Fragestellung ist 2022 ein offenes Problem.
-
-\begin{problem}
-  Entwickeln Sie einen Algorithmus der den Rang $r$ aus einer
-  Weierstrass-Gleichung mit rationalen Koeffizienten berechnet. 
-\end{problem}
 
 \begin{satz}
   Sei $n\in\IN$ und $E_n : Y^2=X^3-n^2X$. Dann ist $n$ genau dann eine
@@ -924,14 +959,24 @@ Die folgende Fragestellung ist 2022 ein offenes Problem.
   $E_n(\IQ)$ die zu $(\IZ/2\IZ)^2$ isomorph ist, vgl.
   Beispiel~\ref{bsp:vierergruppe}. Die Untergruppe $H$ ist ebenfalls eine
   Untergruppe von $G$ wie in Mazurs Satz. Folglich ist  $G=H$ oder $G$
-  ist zu $\IZ/2\IZ\times\IZ/4\IZ$ isomorph.
-  Im zweiten Fall hätte $E_n(\IQ)$ ein Element der Ordnung $4$, aber
-  dies ist durch Lemma~\ref{len:noorder4} ausgeschlossen. Also muss
+  ist zu $\IZ/2\IZ\times\IZ/(2n)\IZ$  isomorph mit $n\in \{2,3,4\}$. 
+  Im zweiten Fall hätte $E_n(\IQ)$ ein Element der Ordnung $4$ (in den
+  Fällen $n=2$ und $n=4$) oder der Ordnung $6$ (im Fall $n=3$). Aber
+  das ist wegen Lemma~\ref{len:noorder4} ausgeschlossen. Also muss
   $G=H$. Weil $(x,y)$ nicht in $G$ liegt, hat $(x,y)$ unendliche
   Ordnung. Also ist der Rang von $E_n$ positiv. 
 \end{proof}
 
 Man kann diesen letzten Satz auch ohne den tiefen Satz von Mazur beweisen.
+
+Der Exponent $r$ in Mordells Satz heisst \emph{Rang}\index{Rang von $E(\IQ)$} von
+$E(\IQ)$ oder $E$. Diese Invariante liegt tiefer und bleibt mysteriös.
+Die folgende Fragestellung ist 2022 ein offenes Problem.
+
+\begin{problem}
+  Entwickeln Sie einen Algorithmus der den Rang $r$ aus einer
+  Weierstrass-Gleichung mit rationalen Koeffizienten berechnet. 
+\end{problem}
 
 Hier ist der aktuelle Weltrekord bzgl. dem Rang.
 

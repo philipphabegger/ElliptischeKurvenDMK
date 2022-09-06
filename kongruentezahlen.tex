@@ -26,7 +26,10 @@
     $a'=\lambda a, b'=\lambda b, c'=\lambda c$ wiederum rational.
     Die Fläche des entsprechenden rechtwinkligen Dreiecks ist
      $a'b'/2
-    = \lambda^2 ab/2 = \lambda^2 n$. Diese Zahl ist kongruent, falls sie ganz ist.
+    = \lambda^2 ab/2 = \lambda^2 n$. Diese Zahl ist kongruent, falls
+    sie ganz ist.
+    Aus diesem Grund sind vor allem die quadratfreien Zahlen
+    hinsichtlich der Kongruenzbedingung interessant. 
   \item[(iii)]
     Aus (i) und (ii) folgt, dass es unendlich viele kongruente Zahlen
     gibt, denn $\{6\lambda^2 : \lambda\in\IN\}$ besteht aus kongruente
@@ -65,7 +68,57 @@ von Pierre de Fermat bewiesen.
   Eins  ist keine kongruente Zahl.
 \end{satz}
 \begin{proof}
-  TODO
+  Wir nehmen das Gegenteil an und zeigen einen Widerspruch. Dann gibt
+  es ein rechtwinkliges Dreieck mit rationalen Seiten und Fläche $1$.
+  Nach geeigneter Streckung erhalten wir ein neues rechwinkliges Dreieck dessen
+  Seitenlängen natürliche Zahlen sind und dessen Quadrat eine Quadratzahl
+  ist.
+
+  Daher gibt es  ein entsprechendes Dreieck
+  mit minimaler Flächen. 
+  D.h. es gibt $a,b,c\in\IN$, so dass $a^2+b^2=c^2$ und $\frac{ab}{2}
+  = d^2$ mit $d\in\IN$ und es gibt kein rechtwinkliges Dreieck mit Seitenlängen in
+  $\IN$ und Fläche strikt kleiner als $d^2$.  Insbesondere besitzt das
+  Tripel $(a,b,c)$ kein gemeinsamer Primteiler. 
+
+  Aus der Theorie pythagoreischer Tripel ist  bekannt, dass es $u,v\in\IN$ gibt, so dass
+  \begin{equation*}
+    a  = u^2-v^2, \quad b = 2uv, \quad, c=u^2+v^2
+  \end{equation*}
+  wobei $\mathrm{ggT}(u,v)=1, v<u$ und $2\mid uv$.
+
+  \textbf{Behauptung:} Die Zahlen $u,v,u+v,u-v$ sind paarwise
+  teilerfremd.
+  Ist $p$ bspw. ein gemeinsamer Primteiler von $u$ und $v$, dann teilt
+  $p$ alle Einträge von $(a,b,c)$. Dies ist unmöglich. Falls $p$
+  ein gemeinsamer Primteiler von $u+v$ und $u-v$ ist, dann teilt $p$
+  die Summe  $(u+v)+(u-v)=2u$ und die Differenz $(u+v)-(u-v) = 2v$.
+  Wie eben gesehen muss $p=2$ sein. Aber wir wissen, dass $u$ oder $v$
+  gerade ist.  Daher müssen $u$ und $v$ beide Gerade sein. Auch das
+  ist unmöglich. Die  Behauptung folgt, da die anderen Fälle allesamt
+  ähnlich sind. 
+
+  Es gilt $2d^2 = ab = (u^2-v^2)2uv$, also $d^2 = (u+v)(u-v)uv$. Alle
+  vier Faktoren rechts sind paarweise teilerfremd und deren Produkt
+  ist eine Quadratzahl. Aufgrund der Eindeutigkeit der Primfaktorzerlegung
+  sind die vier Faktoren $u,v,u+v,u-v$ allesamt Quadratzahlen. Also
+  existieren $x,y,z,t\in\IN$, so dass
+  \begin{equation*}
+    u+v = x^2, \quad u-v = y^2, \quad u=z^2, \quad v= t^2.
+  \end{equation*}
+
+  Es gilt $x>y$ und 
+  $$(x+y)^2+(x-y)^2 = 2x^2+2y^2 = 2(u+v)+2(u-v) = 4u = (2z)^2.
+  $$
+  Also existiert ein rechwinkliges Dreieck mit Seitenlängen
+  $x+y,x-y,2z$, allesamt in $\IN$, dessen Fläche
+  \begin{equation*}
+    \frac{(x+y)(x-y)}{2} = \frac{x^2-y^2}{2} = \frac{(u+v)-(u-v)}{2} =
+    v = t^2
+  \end{equation*}
+  eine Quadratzahl ist. 
+  Aber $d^2 = (u+v)(u-v)uv\ge 2v$ da $u+v\ge 2,u-v\ge 1$ und $u\ge 1$.
+  Also $t^2=v<d^2$ und dies widerspricht der Minimalität von $d^2$. 
 \end{proof}
 
 \begin{korollar}
@@ -124,11 +177,12 @@ keinen systematischen Zugang zu der Frage oben.
   was für (i)  zu zeigen.
 
   Für den Beweis von (ii) setzen wir
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:abcvonnxy}
     a = \left|\frac{n^2-x^2}{y}\right|, \quad
     b = \left|\frac{2nx}{y}\right|, \quad\text{und}\quad
     c = \left|\frac{n^2+x^2}{y}\right|. 
-  \end{equation*}
+  \end{equation}
   Eine direkt Rechnung zeigt $a^2+b^2=c^2$. Weiterhin gilt
   \begin{equation*}
     \frac{ab}{2} = \frac{|(n^2-x^2)(2nx)|}{2y^2} = \frac{2n |n^2x -
@@ -155,15 +209,32 @@ Interesse sind die \emph{rationalen Punkte} dieser Kurve, d.h. Punkte,
 deren Koordinaten rational sind.
 
 Die Punkte $(0,0),(\pm n,0)$ liegen augenscheinlich auf der Kurve für
-jedes $n$. Gibt es mindestens ein weiterer rationaler Punkt, d.h. ein
+jedes $n$. Man nennst sie daher auch die trivialen (rationalen)
+Lösungen.
+Gibt es mindestens ein weiterer rationaler Punkt, d.h. ein
 Punkt dessen Ordinate nicht verschwindet, so ist $n$ eine kongruente
 Zahl.
 Weiterhin ist die Umkehrung auch wahr. 
 
+\begin{beispiel}
+  Die Zahl $n=103$ ist kongruent. Die kleinste nicht-triviale
+  rationale Lösung
+  von $Y^2 = X^3-101^2X$ mit positiver Ordinate ist
+  \begin{equation*}
+    \left(\frac{16332534559428025}{11928893315329}, \frac{2081363685506152106939880}{41200286097029552767}\right).
+  \end{equation*}
+  Dieser Punkt entsammt der \href{https://www.lmfdb.org/EllipticCurve/Q/339488/b/3}{LMFDB}.
+  Nach (\ref{eq:abcvonnxy}) erhalten wir die Seitenlängen des rechtwinkligen Dreiecks:
+  \begin{alignat*}1
+    a &=\frac{16286253110943816}{441394452081515}\\
+    b &=\frac{45463628564396045}{8143126555471908}\\
+    c &= \frac{134130664938047228374702001079697}{3594330884182957394223708580620}.
+  \end{alignat*}
+\end{beispiel}
 
 Die Gleichung (\ref{eq:ellipticcong}) ist ein Spezialfall einer
-Weierstrass-Gleichung, welche in grösserer Allgemeinen eine elliptische Kurve
-definiert.
+Weierstrass-Gleichung, welche in grösserer Allgemeinen eine
+elliptische Kurve definiert.
 
 Den Satz von Fermat, Satz~\ref{satz:fermat}, lässt sich wie folgt
 umformulieren.
